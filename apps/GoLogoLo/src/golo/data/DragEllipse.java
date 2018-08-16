@@ -43,41 +43,41 @@ public class DragEllipse extends Ellipse implements Drag {
     public void size(int x, int y) {
 	double width = x - startX;
 	double height = y - startY;
-	double X = startX + (width / 2);
-	double Y = startY + (height / 2);
+	double X = startX + (width);
+	double Y = startY + (height);
 	setCenterX(X);
 	setCenterY(Y);
-	setRadiusX(width / 2);
-	setRadiusY(height / 2);	
+	setRadiusX(width);
+	setRadiusY(height);	
 	
     }
         
     @Override
     public double getX() {
-	return getCenterX() - getRadiusX();
+	return getCenterX();
     }
 
     @Override
     public double getY() {
-	return getCenterY() - getRadiusY();
+	return getCenterY();
     }
 
     @Override
     public double getWidth() {
-	return getRadiusX() * 2;
+	return getRadiusX();
     }
 
     @Override
     public double getHeight() {
-	return getRadiusY() * 2;
+	return getRadiusY();
     }
         
     @Override
     public void setPosandSize(double initX, double initY, double initWidth, double initHeight) {
-	setCenterX(initX + (initWidth/2));
-	setCenterY(initY + (initHeight/2));
-	setRadiusX(initWidth/2);
-	setRadiusY(initHeight/2);
+	setCenterX(initX);
+	setCenterY(initY);
+	setRadiusX(initWidth);
+	setRadiusY(initHeight);
     }
     
     @Override

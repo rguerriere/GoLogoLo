@@ -355,6 +355,11 @@ public class goloWorkspace extends AppWorkspaceComponent {
             app.getFoolproofModule().updateAll();
         });
         
+        addImageButton.setOnAction(e->{
+            componentController.processAddImage();
+            app.getFoolproofModule().updateAll();
+        });
+        
         removeComponentButton.setOnAction(e->{
             componentController.processRemoveComponent();
             app.getFoolproofModule().updateAll();

@@ -35,6 +35,8 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
@@ -101,8 +103,10 @@ public class goloFoolproofDesign implements FoolproofDesign {
             gui.getGUINode(GOLO_STOP_ONE_COLORPICKER).setDisable((selectedComponent instanceof Text)); 
             gui.getGUINode(GOLO_BORDER_RADIUS_SLIDER).setDisable((selectedComponent instanceof Text));
             
-            ((Slider)gui.getGUINode(GOLO_BORDER_THICKNESS_SLIDER)).setValue(((Shape)selectedComponent).getStrokeWidth());
-            ((ColorPicker)gui.getGUINode(GOLO_BORDER_COLORPICKER)).setValue((Color)((Shape)selectedComponent).getStroke());
+            if(selectedComponent instanceof ImageView==false){
+                ((Slider)gui.getGUINode(GOLO_BORDER_THICKNESS_SLIDER)).setValue(((Shape)selectedComponent).getStrokeWidth());
+                ((ColorPicker)gui.getGUINode(GOLO_BORDER_COLORPICKER)).setValue((Color)((Shape)selectedComponent).getStroke());
+            }
             if(selectedComponent instanceof Rectangle)
                 ((Slider)gui.getGUINode(GOLO_BORDER_RADIUS_SLIDER)).setValue(((Rectangle)selectedComponent).getArcWidth()/5);
             

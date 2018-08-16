@@ -1,11 +1,15 @@
 package golo.workspace.controllers;
 
+import static djf.AppPropertyType.ADD_IMAGE_TITLE;
 import static djf.AppPropertyType.ADD_TEXT_CONTENT;
 import static djf.AppPropertyType.ADD_TEXT_TITLE;
+import static djf.AppPropertyType.LOAD_WORK_TITLE;
 import golo.data.goloData;
 import djf.AppTemplate;
+import static djf.AppTemplate.PATH_WORK;
 import djf.ui.dialogs.AppDialogsFacade;
 import golo.GoLogoLoApp;
+import golo.data.DragImage;
 import golo.data.DragRectangle;
 import golo.data.DragText;
 import golo.data.goloItemPrototype;
@@ -18,12 +22,15 @@ import golo.transactions.MoveDownItem_Transaction;
 import golo.transactions.MoveUpItem_Transaction;
 import golo.transactions.RemoveItem_Transaction;
 import golo.transactions.Text_Transaction;
+import java.io.File;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import properties_manager.PropertiesManager;
 
 
 /**
@@ -63,6 +70,34 @@ public class ComponentController
          dataManager = (goloData)app.getDataComponent();    
          DragRectangle initRectangle = new DragRectangle();
          goloItemPrototype proto = new goloItemPrototype("unnamed", "Rectangle",initRectangle);
+         initRectangle.setPrototype(proto);       
+         AddItem_Transaction transaction = new AddItem_Transaction(dataManager, proto);
+         app.processTransaction(transaction);
+         app.getFileModule().markAsEdited(true);
+    }
+    
+    public void processAddImage(){
+        dataManager = (goloData)app.getDataComponent();
+        FileChooser fc = new FileChooser();
+        FileChooser.ExtensionFilter imageFilter
+        = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png");
+        fc.getExtensionFilters().add(imageFilter);
+        fc.setInitialDirectory(new File(PATH_WORK));
+        PropertiesManager props = PropertiesManager.getPropertiesManager();
+	fc.setTitle(props.getProperty(ADD_IMAGE_TITLE));
+        File selectedFile = fc.showOpenDialog(app.getGUIModule().getWindow());        
+         DragImage initImage = new DragImage(selectedFile.toURI().toString());
+         goloItemPrototype proto = new goloItemPrototype("unnamed", "Image",initImage);
+         initImage.setPrototype(proto);       
+         AddItem_Transaction transaction = new AddItem_Transaction(dataManager, proto);
+         app.processTransaction(transaction);
+         app.getFileModule().markAsEdited(true);
+    }
+    
+    public void processAddCircle(){
+         dataManager = (goloData)app.getDataComponent();    
+         DragRectangle initRectangle = new DragRectangle();
+         goloItemPrototype proto = new goloItemPrototype("unnamed", "Circle",initRectangle);
          initRectangle.setPrototype(proto);       
          AddItem_Transaction transaction = new AddItem_Transaction(dataManager, proto);
          app.processTransaction(transaction);

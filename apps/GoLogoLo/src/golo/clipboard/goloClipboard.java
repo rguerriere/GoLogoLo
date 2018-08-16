@@ -95,12 +95,12 @@ public class goloClipboard implements AppClipboardComponent {
                 // SURE IF WE PASTE THEM AGAIN THEY ARE BRAND NEW OBJECTS
                 copyToCutClipboard(clipboardCopiedItem);
                 clipboardCutItem = (goloItemPrototype)clipboardCutItem.clone();
-                PasteItems_Transaction transaction = new PasteItems_Transaction((GoLogoLoApp)app, clipboardCutItem, clipboardCutItem.getNode() , data.getNumItems());
+                PasteItems_Transaction transaction = new PasteItems_Transaction((GoLogoLoApp)app, clipboardCutItem, clipboardCutItem.getNode() , -1);
                 app.processTransaction(transaction);
                 app.getFileModule().markAsEdited(true);
             }
             else if (clipboardCopiedItem != null){
-                PasteItems_Transaction transaction = new PasteItems_Transaction((GoLogoLoApp)app, clipboardCopiedItem,clipboardCopiedComponent, data.getNumItems());
+                PasteItems_Transaction transaction = new PasteItems_Transaction((GoLogoLoApp)app, clipboardCopiedItem,clipboardCopiedComponent, -1);
                 app.processTransaction(transaction);
 
                 // NOW WE HAVE TO RE-COPY THE COPIED ITEMS TO MAKE

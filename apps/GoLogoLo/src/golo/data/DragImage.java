@@ -14,15 +14,6 @@ public class DragImage extends ImageView implements Drag{
     String file_path;
     goloItemPrototype attachedPrototype;
     
-     public DragImage() {
-	setX(0.0);
-	setY(0.0);	
-	setOpacity(1.0);
-	startX = 0.0;
-	startY = 0.0;
-        file_path="";
-    }
-    
     public DragImage(String path) {
 	setX(0.0);
 	setY(0.0);	

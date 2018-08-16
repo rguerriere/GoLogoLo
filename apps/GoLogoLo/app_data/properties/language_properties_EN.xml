@@ -98,7 +98,7 @@
         <property name="ABOUT_TITLE"            value="About GOLO"></property>
         <property name="ABOUT_CONTENT"          value="GOLO, the To Do List Maker - Debugging Enterprises - © 2017"></property>
 
-
+        <property name="ADD_IMAGE_TITLE"        value="Add Image"></property>
         <!-- ENGLISH LANGUAGE SETTINGS SPECIFICALLY FOR GOLO CONTROLS -->
         
         <!-- LANGUAGE-DEPENDENT TEXT FOR WORKSPACE CONTROLS -->
