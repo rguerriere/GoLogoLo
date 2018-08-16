@@ -42,10 +42,6 @@ public class DragRectangle extends Rectangle implements Drag{
 	startY = y;
     }
     
-    public String cT(double x, double y) {
-	return "(x,y): (" + x + "," + y + ")";
-    }
-    
     @Override
     public void size(int x, int y) {
 	double width = x - getX();

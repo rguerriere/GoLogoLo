@@ -22,8 +22,10 @@ public class Drag_Transaction implements jTPS_Transaction {
 
     @Override
     public void doTransaction() {
-        if(After instanceof Text==false) 
+        
+        if(After instanceof Text==false){ 
             ((Drag)After).setPosandSize(((Drag)AfterCloned).getX(),((Drag)AfterCloned).getY(), ((Drag)AfterCloned).getWidth(), ((Drag)AfterCloned).getHeight());
+            }
         else
             ((Drag)After).setPosandSize(((Drag)AfterCloned).getX(),((Drag)AfterCloned).getY(), 0, 0);
     }

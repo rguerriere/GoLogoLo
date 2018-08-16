@@ -60,13 +60,14 @@ public class DragImage extends ImageView implements Drag{
 
     @Override
     public double getWidth() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 0;
     }
 
     @Override
     public double getHeight() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 0;
     }
+    
     
    public String getpath()
    {
@@ -75,7 +76,10 @@ public class DragImage extends ImageView implements Drag{
 
     @Override
     public Node clone() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DragImage image = new DragImage(this.file_path);
+        image.setX(this.xProperty().getValue());
+        image.setY(this.yProperty().getValue());
+        return image;
     }
     
     @Override
