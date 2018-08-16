@@ -11,10 +11,10 @@ public class DragEllipse extends Ellipse implements Drag {
     goloItemPrototype attachedPrototype;
     
     public DragEllipse() {
-	setRadiusX(0.0);
-	setRadiusY(0.0);
-        setCenterX(0.0);
-	setCenterY(0.0);
+	setRadiusX(90.0);
+	setRadiusY(90.0);
+        setCenterX(600.0);
+	setCenterY(600.0);
 	setOpacity(1.0);
 	startX = 0.0;
 	startY = 0.0;
@@ -40,16 +40,9 @@ public class DragEllipse extends Ellipse implements Drag {
     }
     
     @Override
-    public void size(int x, int y) {
-	double width = x - startX;
-	double height = y - startY;
-	double X = startX + (width);
-	double Y = startY + (height);
-	setCenterX(X);
-	setCenterY(Y);
+    public void size(int width, int height) {
 	setRadiusX(width);
 	setRadiusY(height);	
-	
     }
         
     @Override
@@ -87,7 +80,13 @@ public class DragEllipse extends Ellipse implements Drag {
 
     @Override
     public Node clone() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DragEllipse cloney = new DragEllipse();
+        cloney.setCenterX(getCenterX());
+        cloney.setCenterY(getCenterY());
+        cloney.setRadiusX(getRadiusX());
+        cloney.setRadiusY(getRadiusY());
+        cloney.setFill(getFill());
+        return cloney;
     }
 
     @Override

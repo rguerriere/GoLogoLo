@@ -9,6 +9,7 @@ import djf.AppTemplate;
 import static djf.AppTemplate.PATH_WORK;
 import djf.ui.dialogs.AppDialogsFacade;
 import golo.GoLogoLoApp;
+import golo.data.DragEllipse;
 import golo.data.DragImage;
 import golo.data.DragRectangle;
 import golo.data.DragText;
@@ -96,9 +97,9 @@ public class ComponentController
     
     public void processAddCircle(){
          dataManager = (goloData)app.getDataComponent();    
-         DragRectangle initRectangle = new DragRectangle();
-         goloItemPrototype proto = new goloItemPrototype("unnamed", "Circle",initRectangle);
-         initRectangle.setPrototype(proto);       
+         DragEllipse initEllipse = new DragEllipse();
+         goloItemPrototype proto = new goloItemPrototype("unnamed", "Circle",initEllipse);
+         initEllipse.setPrototype(proto);       
          AddItem_Transaction transaction = new AddItem_Transaction(dataManager, proto);
          app.processTransaction(transaction);
          app.getFileModule().markAsEdited(true);

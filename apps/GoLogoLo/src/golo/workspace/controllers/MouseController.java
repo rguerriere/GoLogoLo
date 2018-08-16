@@ -3,6 +3,7 @@ package golo.workspace.controllers;
 import static djf.AppPropertyType.EDIT_TEXT_CONTENT;
 import static djf.AppPropertyType.EDIT_TEXT_TITLE;
 import djf.AppTemplate;
+import golo.GoLogoLoApp;
 import static golo.data.ComponentState.DRAG_COMPONENT;
 import static golo.data.ComponentState.DRAG_NONE;
 import static golo.data.ComponentState.SELECT_COMPONENT;
@@ -10,12 +11,14 @@ import golo.data.Drag;
 import golo.data.goloData;
 import golo.transactions.Drag_Transaction;
 import golo.transactions.EditItem_Transaction;
+import golo.transactions.Resize_Transaction;
 import golo.workspace.goloWorkspace;
 import java.util.Optional;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.shape.Ellipse;
 import javafx.scene.text.Text;
 import properties_manager.PropertiesManager;
 
@@ -102,5 +105,21 @@ public class MouseController {
          }
         
     }
-
+    public void processMouseScroll(int y)
+    {
+         goloData dataManager = (goloData) app.getDataComponent();
+          if(dataManager.getSelectedComponent() instanceof Ellipse)
+          {
+            Node node = dataManager.getSelectedComponent();
+            Resize_Transaction transaction;
+            if (y < 0){
+                transaction = new Resize_Transaction((GoLogoLoApp)app,dataManager.getSelectedItem(),"size_down");
+                app.processTransaction(transaction);
+            }
+            else
+                transaction = new Resize_Transaction((GoLogoLoApp)app,dataManager.getSelectedItem(),"size_up");
+                app.processTransaction(transaction);
+          }
+        
+    }
 }

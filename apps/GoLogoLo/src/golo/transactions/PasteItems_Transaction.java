@@ -35,10 +35,12 @@ public class PasteItems_Transaction implements jTPS_Transaction {
         if(index==0){
             data.addItemAt(itemToPaste,0);
             data.addComponent(ComponentsToPaste);
+            ((Drag)ComponentsToPaste).setPosandSize( ((Drag)ComponentsToPaste).getX() + 20, ((Drag)ComponentsToPaste).getY() + 20, ((Drag)ComponentsToPaste).getWidth(), ((Drag)ComponentsToPaste).getHeight());
         }
         else{
             data.addItemAt(itemToPaste, index);
             data.addComponentAt(ComponentsToPaste, data.getShapes().size() - index);
+            ((Drag)ComponentsToPaste).setPosandSize( ((Drag)ComponentsToPaste).getX() + 20, ((Drag)ComponentsToPaste).getY() + 20, ((Drag)ComponentsToPaste).getWidth(), ((Drag)ComponentsToPaste).getHeight());
         }
         data.clearSelected();
         if(data.getSelectedComponent()!=null)

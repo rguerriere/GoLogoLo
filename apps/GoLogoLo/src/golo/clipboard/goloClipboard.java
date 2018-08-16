@@ -61,7 +61,7 @@ public class goloClipboard implements AppClipboardComponent {
         goloData data = (goloData)app.getDataComponent();
         clipboardCutItem = null;
         clipboardCopiedItem = (goloItemPrototype)itemToCopy.clone();
-        clipboardCopiedComponent = (Node)((Drag)ComponentToCopy).clone(); 
+        clipboardCopiedComponent = clipboardCopiedItem.getNode();
         app.getFoolproofModule().updateAll();
     }
 

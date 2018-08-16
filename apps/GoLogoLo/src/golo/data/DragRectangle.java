@@ -70,7 +70,7 @@ public class DragRectangle extends Rectangle implements Drag{
 	copy.yProperty().set(this.yProperty().get());
 	copy.widthProperty().set(this.widthProperty().get());
 	copy.heightProperty().set(this.heightProperty().get());	
-        //add GRADIENT
+        copy.setFill(getFill());
         copy.setStroke(this.getStroke());
         copy.setStrokeWidth(this.getStrokeWidth());
         return copy;

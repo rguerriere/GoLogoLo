@@ -49,6 +49,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableCell;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
@@ -359,6 +360,10 @@ public class goloWorkspace extends AppWorkspaceComponent {
             componentController.processAddImage();
             app.getFoolproofModule().updateAll();
         });
+        addCircleButton.setOnAction(e->{
+            componentController.processAddCircle();
+            app.getFoolproofModule().updateAll();
+        });
         
         removeComponentButton.setOnAction(e->{
             componentController.processRemoveComponent();
@@ -442,5 +447,9 @@ public class goloWorkspace extends AppWorkspaceComponent {
         }
     });
         
+        canvas.setOnScroll((ScrollEvent event) -> 
+        {
+            mouseController.processMouseScroll((int)event.getDeltaY());
+        });
     }
 }
