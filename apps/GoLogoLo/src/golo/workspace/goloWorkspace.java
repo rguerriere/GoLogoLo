@@ -416,6 +416,9 @@ public class goloWorkspace extends AppWorkspaceComponent {
     
     public void setCanvas(Pane initCanvas){
         canvas = initCanvas;
+        
+        canvas.setStyle("-fx-background-color : white; -fx-border-color : grey;");
+        
         ((BorderPane)workspace).setCenter(canvas); 
         ((BorderPane)workspace).setLeft(goloPane);
         ((BorderPane)workspace).setRight(editToolbar);
