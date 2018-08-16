@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This XML file provides all the text to be used when the application
+    is to be displayed in English.
+-->
+<properties>
+    <property_list>
+
+        <!-- ENGLISH LANGUAGE SETTINGS FOR DESKTOP JAVA FRAMEWORK CONTROLS -->
+
+        <!-- WELCOME DIALOG TEXT -->
+        <property name="WELCOME_DIALOG_TITLE"               value="Bienvenido al Creador de listas de tareas"></property>
+        <property name="WELCOME_DIALOG_RECENT_WORK_LABEL"   value="Trabajo reciente"></property>
+        <property name="WELCOME_DIALOG_NEW_BUTTON_TEXT"  value="Crear una nueva lista de tareas pendientes"></property>
+
+        <!-- GENERIC APP ERROR MESSAGES -->
+        <property name="APP_ERROR_TITLE"            value="Error de la aplicación"></property>
+        <property name="APP_ERROR_CONTENT"          value="Rever"></property>
+        <property name="GENERAL_ERROR_TITLE"        value="Cuadro de diálogo de error"></property>
+        <property name="GENERAL_ERROR_CONTENT"      value="Datos inválidos para una nueva línea"></property>
+        
+        <!-- CUSTOM APP ERROR MESSAGES -->
+        <property name="CORRUPTED_FILE_TITLE"       value="Error: archivo dañado"></property>
+        <property name="CORRUPTED_FILE_CONTENT"     value="Faltan datos cruciales en el archivo."></property>
+        <property name="MISSING_DATA_TITLE"         value="Error de datos faltantes"></property>
+        <property name="MISSING_DATA_CONTENT"       value= "Por favor revar"></property>
+
+        <!-- PROPERTIES ERROR MESSAGES -->
+        <property name="PROPERTIES_ERROR_TITLE"     value="Error de archivo de propiedades"></property>
+        <property name="PROPERTIES_ERROR_CONTENT"   value="Hubo un error al cargar un archivo de propiedades"></property>
+
+        <!-- FILE TOOLBAR TOOLTIPS -->
+        <property name="NEW_BUTTON_TOOLTIP"         value="Nueva lista de tareas pendientes"></property>
+        <property name="LOAD_BUTTON_TOOLTIP"        value="Cargar para hacer la lista"></property>
+        <property name="CLOSE_BUTTON_TOOLTIP"       value="Cierra hacer la lista"></property>
+        <property name="SAVE_BUTTON_TOOLTIP"        value="Guardar en la lista"></property>
+        <property name="EXPORT_BUTTON_TOOLTIP"      value="Exportar a la lista de tareas"></property>
+        <property name="EXIT_BUTTON_TOOLTIP"        value="Salida"></property>
+
+        <!-- CLIPBOARD TOOLBAR TOOLTIPS -->
+        <property name="CUT_BUTTON_TOOLTIP"         value="Cortar"></property>
+        <property name="COPY_BUTTON_TOOLTIP"        value="Dupdo"></property>
+        <property name="PASTE_BUTTON_TOOLTIP"       value="Pegar"></property>
+
+        <!-- UNDO TOOLBAR TOOLTIPS -->
+        <property name="UNDO_BUTTON_TOOLTIP"        value="Deshacer"></property>
+        <property name="REDO_BUTTON_TOOLTIP"        value="Rehacer"></property>
+
+        <!-- HELP TOOLBAR TOOLTIPS -->
+        <property name="HELP_BUTTON_TOOLTIP"        value="Ayuda"></property>
+        <property name="LANGUAGE_BUTTON_TOOLTIP"    value="Cambiar idioma"></property>
+        <property name="ABOUT_BUTTON_TOOLTIP"       value="Acerca de"></property>
+
+        <!-- NEW FEEDBACK DIALOGS -->	
+        <property name="NEW_SUCCESS_TITLE"      value="Nuevo completo"></property>
+        <property name="NEW_SUCCESS_CONTENT"	value="Trabajo creado pero aún no guardado"></property>
+        <property name="NEW_ERROR_TITLE"        value="Advertencia: error"></property>
+        <property name="NEW_ERROR_CONTENT"      value="Se produjo un error al crear un nuevo trabajo."></property>
+
+        <!-- LOAD FEEDBACK DIALOGS -->
+        <property name="LOAD_WORK_TITLE"        value="Cargar trabajo"></property>
+        <property name="LOAD_SUCCESS_TITLE"     value="Carga completa"></property>
+        <property name="LOAD_SUCCESS_CONTENT"   value="El archivo se cargó con éxito y ahora se puede editar."></property>
+        <property name="LOAD_ERROR_TITLE"       value="Error de carga"></property>        
+        <property name="LOAD_ERROR_CONTENT"     value="Cargando ha fallado Probablemente haya un problema de File Formatting."></property>
+
+        <!-- SAVE FEEDBACK DIALOGS -->
+        <property name="SAVE_WORK_TITLE"        value="Ahorre trabajo"></property>
+        <property name="SAVE_SUCCESS_TITLE"     value="Guardar completo"></property>
+        <property name="SAVE_SUCCESS_CONTENT"   value="El archivo está guardado"></property>
+        <property name="SAVE_ERROR_TITLE"       value="Guardar error"></property>
+        <property name="SAVE_ERROR_CONTENT"     value="El ahorro ha fallado. Probablemente debido a un problema de acceso a archivos."></property>
+        <property name="SAVE_VERIFY_TITLE"		value="¿Guardar trabajo no guardado?"></property>
+        <property name="SAVE_VERIFY_CONTENT"	value="¿Le gustaría guardar su trabajo no guardado primero?"></property>
+
+        <!-- ABOUT DIALOG -->
+        <property name="ABOUT_TITLE"            value="Acerca de GOLO"></property>
+        <property name="ABOUT_CONTENT"          value="GOLO, el creador de listas de tareas - Empresas de depuración - © 2017"></property>
+
+
+        <!-- ENGLISH LANGUAGE SETTINGS SPECIFICALLY FOR GOLO CONTROLS -->
+        
+        <!-- LANGUAGE-DEPENDENT TEXT FOR WORKSPACE CONTROLS -->
+        <property name="GOLO_TO_DO_LIST_LABEL_TEXT"      value="@todo Lista"></property>
+        <property name="GOLO_NAME_LABEL_TEXT"            value="Lista de Nombre:"></property>
+        <property name="GOLO_OWNER_LABEL_TEXT"           value="Propietario de lista:"></property>
+        <property name="GOLO_ITEMS_LABEL_TEXT"           value="Artículos"></property>
+        <property name="GOLO_ADD_ITEM_BUTTON_TOOLTIP"    value="Agregar ítem nuevo"></property>
+        <property name="GOLO_REMOVE_ITEM_BUTTON_TOOLTIP" value="Remover item seleccionado"></property>
+        <property name="GOLO_EDIT_ITEM_BUTTON_TOOLTIP"   value="Editar elemento seleccionado"></property>
+        <property name="GOLO_MOVE_UP_BUTTON_TOOLTIP"     value="Mueva el elemento seleccionado hacia arriba"></property>
+        <property name="GOLO_MOVE_DOWN_BUTTON_TOOLTIP"   value="Mover el elemento seleccionado hacia abajo"></property>
+        <property name="GOLO_CATEGORY_COLUMN_TEXT"       value="Categoría"></property>
+        <property name="GOLO_DESCRIPTION_COLUMN_TEXT"    value="Descripción"></property>
+        <property name="GOLO_START_DATE_COLUMN_TEXT"     value="Fecha de inicio"></property>
+        <property name="GOLO_END_DATE_COLUMN_TEXT"       value="Fecha final"></property>
+        <property name="GOLO_ASSIGN_COLUMN_TEXT"    value="Asignado a"></property>
+        <property name="GOLO_COMPLETED_COLUMN_TEXT"      value="Terminado"></property>
+
+        <!-- LANGUAGE-DEPENDENT TEXT FOR ITEM DIALOG CONTROLS -->
+        <property name="GOLO_ITEM_DIALOG_HEADER_TEXT"               value="Agregar / Editar elementos"></property>
+        <property name="GOLO_ITEM_DIALOG_ADD_HEADER_TEXT"           value="Añadir artículo"></property>
+        <property name="GOLO_ITEM_DIALOG_EDIT_HEADER_TEXT"          value="Editar elemento"></property>
+        <property name="GOLO_ITEM_DIALOG_CATEGORY_PROMPT_TEXT"      value="Categoría:"></property>
+        <property name="GOLO_ITEM_DIALOG_DESCRIPTION_PROMPT_TEXT"   value="Descripción:"></property>
+        <property name="GOLO_ITEM_DIALOG_START_DATE_PROMPT_TEXT"    value="Fecha de inicio:"></property>
+        <property name="GOLO_ITEM_DIALOG_END_DATE_PROMPT_TEXT"      value="Fecha final:"></property>
+        <property name="GOLO_ITEM_DIALOG_ASSIGNED_TO_PROMPT_TEXT"   value="Asignado a:"></property>
+        <property name="GOLO_ITEM_DIALOG_COMPLETED_PROMPT_TEXT"     value="Terminado:"></property>
+        <property name="GOLO_ITEM_DIALOG_OK_BUTTON_TEXT"            value="OK"></property>
+        <property name="GOLO_ITEM_DIALOG_CANCEL_BUTTON_TEXT"        value="Cancelar"></property>       
+       
+        <!-- TO SWITCH BACK TO ANOTHER LANGUAGE -->
+        <property name="LANGUAGE_DIALOG_TITLE"          value="Selección del idioma de la aplicación"></property>
+        <property name="LANGUAGE_DIALOG_HEADER_TEXT"    value="Elija un idioma"></property>
+        <property name="LANGUAGE_DIALOG_CONTENT_TEXT"   value="Seleccione un idioma para la interfaz de usuario."></property>
+
+        <property name="WORK_FILE_EXT"          value="golo"></property>
+	<property name="WORK_FILE_EXT_DESC"     value="GoLogoLo Archivos"></property>
+
+    </property_list>
+    
+    <!-- GOLO COMBO BOX CHOICES -->
+    <property_options_list>
+        <property_options name="LANGUAGE_OPTIONS">
+            <option>English</option>
+            <option>Spanish</option>
+        </property_options>
+    </property_options_list>
+</properties>

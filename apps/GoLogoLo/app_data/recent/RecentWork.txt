@@ -1,0 +1,8 @@
+doodle-work/doodle
+dfbdfb-work/dfbdfb.golo
+poop-work/poop
+GradingCriteria-work/GradingCriteria.tdlm
+HouseRepairs-work/HouseRepairs.tdlm
+test1-work/test1
+TEST2-work/TEST2
+Classwork-work/Classwork.tdlm
