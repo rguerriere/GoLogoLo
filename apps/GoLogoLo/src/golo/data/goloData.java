@@ -232,6 +232,11 @@ public class goloData implements AppDataComponent {
         selectedComponent.setEffect(null);
     }
     
+    public GoLogoLoApp getapp()
+    {
+        return app;
+    }
+    
     public void addHighlight(Node selectedComponent)
     {
         selectedComponent.setEffect(highlight);

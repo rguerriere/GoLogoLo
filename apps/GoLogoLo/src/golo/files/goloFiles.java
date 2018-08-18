@@ -2,6 +2,9 @@ package golo.files;
 
 import static djf.AppPropertyType.APP_EXPORT_PAGE;
 import static djf.AppPropertyType.APP_PATH_EXPORT;
+import static djf.AppPropertyType.EXPORT_TITLE;
+import static djf.AppPropertyType.GOLO_CANVAS_PANE;
+import static djf.AppTemplate.PATH_WORK;
 import djf.components.AppDataComponent;
 import djf.components.AppFileComponent;
 import golo.data.Drag;
@@ -40,11 +43,19 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import golo.data.goloData;
 import golo.data.goloItemPrototype;
+import java.awt.image.RenderedImage;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Node;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javax.imageio.ImageIO;
+import properties_manager.PropertiesManager;
 
 /**
  *
@@ -330,7 +341,24 @@ public class goloFiles implements AppFileComponent {
     }
 
     @Override
-    public void exportData(AppDataComponent data, String filePath) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void exportData(AppDataComponent dataManager, String filePath) throws IOException {
+        goloData data = (goloData) dataManager;
+        PropertiesManager propertyManager = PropertiesManager.getPropertiesManager();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialFileName(filePath+".png");
+        fileChooser.setTitle(propertyManager.getProperty(EXPORT_TITLE));
+        fileChooser.setInitialDirectory(new File(propertyManager.getProperty(APP_PATH_EXPORT)));
+        Pane canvas = (Pane)data.getapp().getGUIModule().getGUINode(GOLO_CANVAS_PANE);
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("png files (*.png)", "*.png"));
+        File file = fileChooser.showSaveDialog(null);
+
+        if(file != null){
+            try {
+                //Pad the capture area
+                WritableImage image =  canvas.snapshot(new SnapshotParameters(), null);
+                //Write the snapshot to the chosen file
+                ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+            } catch (IOException ex) {}
+        } 
     }
 }

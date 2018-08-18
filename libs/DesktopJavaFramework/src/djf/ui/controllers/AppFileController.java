@@ -128,11 +128,12 @@ public class AppFileController {
     }
 
     public void processExportRequest() {
+        String workFileName="";
         AppFileModule fileSettings = app.getFileModule();
-        String workFileName = fileSettings.getWorkFile().getName();
+        if(fileSettings.getWorkFile()!=null)
+        workFileName = fileSettings.getWorkFile().getName();
         try {
             app.getFileComponent().exportData(app.getDataComponent(), workFileName);
-            AppDialogsFacade.showExportDialog(app);
         }
         catch(IOException ioe) {
             AppDialogsFacade.showMessageDialog(app.getGUIModule().getWindow(), EXPORT_ERROR_TITLE, EXPORT_ERROR_CONTENT);
