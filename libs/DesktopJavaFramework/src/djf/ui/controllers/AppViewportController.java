@@ -5,18 +5,23 @@
  */
 package djf.ui.controllers;
 
+import static djf.AppPropertyType.GOLO_CANVAS_PANE;
+import static djf.AppPropertyType.SNAP_CHECKBOX;
 import djf.AppTemplate;
 import java.util.Optional;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Shape;
 import javafx.util.Pair;
 
 /**
@@ -32,7 +37,7 @@ public class AppViewportController {
     
     public void processResetViewPort() 
     {
-        Pane canvas = (Pane) ((BorderPane)app.getWorkspaceComponent().getWorkspace()).getCenter();
+        Pane canvas = (Pane) app.getGUIModule().getGUINode(GOLO_CANVAS_PANE);
         canvas.setScaleX(1);
         canvas.setScaleY(1);
         canvas.getParent().layout();
@@ -40,18 +45,19 @@ public class AppViewportController {
     public void processZoomInViewPort() 
     {
         double zoomFactor = 2;
-        Pane canvas =(Pane) ((BorderPane)app.getWorkspaceComponent().getWorkspace()).getCenter();
+        Pane canvas =(Pane) app.getGUIModule().getGUINode(GOLO_CANVAS_PANE);
         canvas.setScaleX(canvas.getScaleX() * zoomFactor);
         canvas.setScaleY(canvas.getScaleY() * zoomFactor);
         canvas.getParent().layout();
     }
     public void processZoomOutViewPort() {
         double zoomFactor = 2;
-        Pane canvas =(Pane) ((BorderPane)app.getWorkspaceComponent().getWorkspace()).getCenter();
+        Pane canvas =(Pane) app.getGUIModule().getGUINode(GOLO_CANVAS_PANE);
         canvas.setScaleX(canvas.getScaleX() / zoomFactor);
         canvas.setScaleY(canvas.getScaleY() / zoomFactor);
         canvas.getParent().layout();
     }
+    
     public void processResizeViewPort() {
         // Create the custom dialog.
         Dialog<Pair<String, String>> dialog = new Dialog<>();
@@ -85,21 +91,22 @@ public class AppViewportController {
             }
         });
 
-        grid.add(new Label("Height:"), 0, 0);
-        grid.add(Height, 1, 0);
-        grid.add(new Label("Width:"), 0, 1);
-        grid.add(Width, 1, 1);
+        grid.add(new Label("Width:"), 0, 0);
+        grid.add(Width, 1, 0);
+        grid.add(new Label("Height:"), 0, 1);
+        grid.add(Height, 1, 1);
 
         dialog.getDialogPane().setContent(grid);
 
         Optional<Pair<String, String>> result = dialog.showAndWait();
         if (result.isPresent() && !Height.getText().isEmpty() && !Width.getText().isEmpty()) {
-            Pane canvas =(Pane) ((BorderPane)app.getWorkspaceComponent().getWorkspace()).getCenter();
-            canvas.setLayoutX(Double.parseDouble(Height.getText()));
-            canvas.setLayoutY(Double.parseDouble(Width.getText()));
+            Pane canvas = (Pane) app.getGUIModule().getGUINode(GOLO_CANVAS_PANE);
+            canvas.setMaxSize(Double.parseDouble(Width.getText()),Double.parseDouble(Height.getText()));
+            canvas.setPrefSize(Double.parseDouble(Width.getText()),Double.parseDouble(Height.getText()));
         }
         
     }
     public void processSnapViewPort() {
+        app.getWorkspaceComponent().processSnap();
     }
 }

@@ -81,4 +81,6 @@ public abstract class AppWorkspaceComponent {
     // BY THE CONCRETE WORKSPACE
    
     public abstract void processWorkspaceKeyEvent(KeyEvent ke);
+    
+    public abstract void processSnap();
 }

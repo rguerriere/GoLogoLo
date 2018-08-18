@@ -1,5 +1,6 @@
 package golo.data;
 
+import static djf.AppPropertyType.GOLO_CANVAS_PANE;
 import djf.components.AppDataComponent;
 import djf.modules.AppGUIModule;
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class goloData implements AppDataComponent {
         itemsSelectionModel.setSelectionMode(SelectionMode.SINGLE);
         goloWorkspace workspace = (goloWorkspace)app.getWorkspaceComponent();
         canvas = new Pane();   
+        app.getGUIModule().addGUINode(GOLO_CANVAS_PANE, canvas);
         workspace.setCanvas(canvas);
         setComponents(canvas.getChildren());
         state = SELECT_COMPONENT;

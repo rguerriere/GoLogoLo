@@ -76,7 +76,7 @@
         <property name="LOAD_ERROR_TITLE"       value="Loading Error"></property>        
         <property name="LOAD_ERROR_CONTENT"     value="Loading has Failed. Likely there is a File Formating problem."></property>
 
-        
+         <property name="EXPORT_WORK_TITLE"        value="Load Work"></property>
         <!-- ADD TEXT DIALOGS -->
         <property name="ADD_TEXT_TITLE"        value="Add Text"></property>
         <property name="ADD_TEXT_CONTENT"      value="Please enter text: "></property>

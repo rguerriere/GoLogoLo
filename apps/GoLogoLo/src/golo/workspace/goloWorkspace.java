@@ -1,5 +1,7 @@
 package golo.workspace;
 
+import static djf.AppPropertyType.GOLO_CANVAS_PANE;
+import static djf.AppPropertyType.SNAP_CHECKBOX;
 import djf.components.AppWorkspaceComponent;
 import djf.modules.AppFoolproofModule;
 import djf.modules.AppGUIModule;
@@ -25,6 +27,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import properties_manager.PropertiesManager;
 import golo.GoLogoLoApp;
+import golo.data.Drag;
 import static golo.goloPropertyType.GOLO_FOOLPROOF_SETTINGS;
 import static golo.workspace.style.goloStyle.CLASS_GOLO_BUTTON;
 import static golo.workspace.style.goloStyle.CLASS_GOLO_COLUMN;
@@ -45,6 +48,9 @@ import golo.workspace.controllers.ComponentController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
@@ -52,8 +58,12 @@ import javafx.scene.control.TableCell;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 /**
@@ -364,6 +374,10 @@ public class goloWorkspace extends AppWorkspaceComponent {
             componentController.processAddCircle();
             app.getFoolproofModule().updateAll();
         });
+        addTriangleButton.setOnAction(e->{
+            componentController.processAddTriangle();
+            app.getFoolproofModule().updateAll();
+        });
         
         removeComponentButton.setOnAction(e->{
             componentController.processRemoveComponent();
@@ -421,10 +435,17 @@ public class goloWorkspace extends AppWorkspaceComponent {
     
     public void setCanvas(Pane initCanvas){
         canvas = initCanvas;
-        
         canvas.setStyle("-fx-background-color : white; -fx-border-color : grey;");
-        
-        ((BorderPane)workspace).setCenter(canvas); 
+        StackPane CanvasHolder = new StackPane();
+        CanvasHolder.getChildren().add(canvas);
+        final Rectangle outputClip = new Rectangle();
+        canvas.setClip(outputClip);
+        canvas.layoutBoundsProperty().addListener((ov, oldValue, newValue) -> {
+            outputClip.setWidth(newValue.getWidth());
+            outputClip.setHeight(newValue.getHeight());
+        });    
+        CanvasHolder.setAlignment(Pos.CENTER);
+        ((BorderPane)workspace).setCenter(CanvasHolder); 
         ((BorderPane)workspace).setLeft(goloPane);
         ((BorderPane)workspace).setRight(editToolbar);
         mouseController = new MouseController(app);
@@ -451,5 +472,26 @@ public class goloWorkspace extends AppWorkspaceComponent {
         {
             mouseController.processMouseScroll((int)event.getDeltaY());
         });
+    }
+
+    @Override
+    public void processSnap() {
+        Pane canvas = (Pane) app.getGUIModule().getGUINode(GOLO_CANVAS_PANE);
+        if(((CheckBox)app.getGUIModule().getGUINode(SNAP_CHECKBOX)).isSelected()){
+            canvas.setStyle("-fx-background-color: #FFF," +
+                                    "linear-gradient(from 0.5px 0px to 10.5px 0px, repeat, black 5%, transparent 5%),\n" +
+                                    "linear-gradient(from 0px 0.5px to 0px 10.5px, repeat, black 5%, transparent 5%);");
+            ObservableList<Node> components = canvas.getChildren();
+            for(int i=0;i<components.size();i++){
+                ((Drag)components.get(i)).setX((Math.round(((Drag)components.get(i)).getX() - 20)));
+                ((Drag)components.get(i)).setY((Math.round(((Drag)components.get(i)).getY() - 20)));
+            }
+        }
+        else
+            canvas.setStyle("-fx-background-color : white; -fx-border-color : grey;");
+        
+        
+        
+        
     }
 }

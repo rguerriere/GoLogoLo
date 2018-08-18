@@ -13,6 +13,7 @@ import golo.data.DragEllipse;
 import golo.data.DragImage;
 import golo.data.DragRectangle;
 import golo.data.DragText;
+import golo.data.DragTriangle;
 import golo.data.goloItemPrototype;
 import static golo.goloPropertyType.GOLO_BOLD_BUTTON;
 import static golo.goloPropertyType.GOLO_FONT_FAMILY_COMBOBOX;
@@ -86,13 +87,15 @@ public class ComponentController
         fc.setInitialDirectory(new File(PATH_WORK));
         PropertiesManager props = PropertiesManager.getPropertiesManager();
 	fc.setTitle(props.getProperty(ADD_IMAGE_TITLE));
-        File selectedFile = fc.showOpenDialog(app.getGUIModule().getWindow());        
-         DragImage initImage = new DragImage(selectedFile.toURI().toString());
-         goloItemPrototype proto = new goloItemPrototype("unnamed", "Image",initImage);
-         initImage.setPrototype(proto);       
-         AddItem_Transaction transaction = new AddItem_Transaction(dataManager, proto);
-         app.processTransaction(transaction);
-         app.getFileModule().markAsEdited(true);
+        File selectedFile = fc.showOpenDialog(app.getGUIModule().getWindow()); 
+        if(selectedFile!=null){
+            DragImage initImage = new DragImage(selectedFile.toURI().toString());
+            goloItemPrototype proto = new goloItemPrototype("unnamed", "Image",initImage);
+            initImage.setPrototype(proto);       
+            AddItem_Transaction transaction = new AddItem_Transaction(dataManager, proto);
+            app.processTransaction(transaction);
+            app.getFileModule().markAsEdited(true);
+        }
     }
     
     public void processAddCircle(){
@@ -103,6 +106,18 @@ public class ComponentController
          AddItem_Transaction transaction = new AddItem_Transaction(dataManager, proto);
          app.processTransaction(transaction);
          app.getFileModule().markAsEdited(true);
+    }
+    
+    public void processAddTriangle(){
+    
+         dataManager = (goloData)app.getDataComponent();    
+         DragTriangle initTriangle = new DragTriangle();
+         goloItemPrototype proto = new goloItemPrototype("unnamed", "Triangle",initTriangle);
+         initTriangle.setPrototype(proto);       
+         AddItem_Transaction transaction = new AddItem_Transaction(dataManager, proto);
+         app.processTransaction(transaction);
+         app.getFileModule().markAsEdited(true);
+    
     }
     
     public void processRemoveComponent(){

@@ -54,7 +54,14 @@ public class DragEllipse extends Ellipse implements Drag {
     public double getY() {
 	return getCenterY();
     }
-
+    public void setX(double X){
+        setCenterX(X);
+    }
+    
+    public void setY(double Y){
+        setCenterY(Y);
+    }
+    
     @Override
     public double getWidth() {
 	return getRadiusX();
