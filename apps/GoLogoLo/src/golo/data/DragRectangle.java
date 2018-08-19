@@ -48,7 +48,7 @@ public class DragRectangle extends Rectangle implements Drag{
         anchors.addAll(Arrays.asList(TopLeft,TopRight,BottomRight,BottomLeft));
         setStroke(Color.BLACK);
         setStrokeWidth(3);
-        setFill(new RadialGradient(0,0,0,0,0,true,CycleMethod.NO_CYCLE,new Stop(0,Color.WHITE)));
+        setFill(new RadialGradient(0,0,0,0,0,true,CycleMethod.NO_CYCLE,new Stop(0,Color.WHITE),new Stop(1,Color.WHITE)));
     }
     
     @Override

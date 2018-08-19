@@ -36,6 +36,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.RadialGradient;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
@@ -67,7 +68,6 @@ public class goloFoolproofDesign implements FoolproofDesign {
         gui.getGUINode(GOLO_BORDER_THICKNESS_SLIDER).setDisable(!itemIsSelected);
         gui.getGUINode(GOLO_BORDER_COLORPICKER).setDisable(!itemIsSelected);
         gui.getGUINode(GOLO_BORDER_RADIUS_SLIDER).setDisable(!itemIsSelected); 
-        
         gui.getGUINode(GOLO_FOCUS_ANGLE_SLIDER).setDisable(!itemIsSelected);
         gui.getGUINode(GOLO_FOCUS_DISTANCE_SLIDER).setDisable(!itemIsSelected);
         gui.getGUINode(GOLO_CENTER_X_SLIDER).setDisable(!itemIsSelected);
@@ -83,6 +83,7 @@ public class goloFoolproofDesign implements FoolproofDesign {
             gui.getGUINode(GOLO_MOVEDOWN_ITEM_BUTTON).setDisable(data.getItemIndex(data.getSelectedItem())==data.getNumItems()-1);
             TableView tableView = (TableView) app.getGUIModule().getGUINode(GOLO_ITEMS_TABLE_VIEW);
             gui.getGUINode(GOLO_MOVEDOWN_ITEM_BUTTON).setDisable(tableView.getSelectionModel().getSelectedIndex()==tableView.getItems().size()-1);
+            
             gui.getGUINode(GOLO_BOLD_BUTTON).setDisable(!(selectedComponent instanceof Text));
             gui.getGUINode(GOLO_ITALICS_BUTTON).setDisable(!(selectedComponent instanceof Text));        
             gui.getGUINode(GOLO_TEXT_SIZE_UP_BUTTON).setDisable(!(selectedComponent instanceof Text));
@@ -91,23 +92,21 @@ public class goloFoolproofDesign implements FoolproofDesign {
             gui.getGUINode(GOLO_FONT_FAMILY_COMBOBOX).setDisable(!(selectedComponent instanceof Text));
             gui.getGUINode(GOLO_FONT_SIZE_COMBOBOX).setDisable(!(selectedComponent instanceof Text));
             
-            gui.getGUINode(GOLO_FOCUS_ANGLE_SLIDER).setDisable((selectedComponent instanceof Text));
-            gui.getGUINode(GOLO_FOCUS_DISTANCE_SLIDER).setDisable((selectedComponent instanceof Text));
-            gui.getGUINode(GOLO_CENTER_X_SLIDER).setDisable((selectedComponent instanceof Text));
-            gui.getGUINode(GOLO_CENTER_Y_SLIDER).setDisable((selectedComponent instanceof Text));
-            gui.getGUINode(GOLO_RADIUS_SLIDER).setDisable((selectedComponent instanceof Text));
-            gui.getGUINode(GOLO_CYCLE_METHOD_COMBOBOX).setDisable((selectedComponent instanceof Text)); 
-            gui.getGUINode(GOLO_STOP_ZERO_COLORPICKER).setDisable((selectedComponent instanceof Text));
-            gui.getGUINode(GOLO_STOP_ONE_COLORPICKER).setDisable((selectedComponent instanceof Text)); 
-            gui.getGUINode(GOLO_BORDER_RADIUS_SLIDER).setDisable((selectedComponent instanceof Text));
+            gui.getGUINode(GOLO_BORDER_THICKNESS_SLIDER).setDisable((selectedComponent instanceof Text || selectedComponent instanceof ImageView));
+            gui.getGUINode(GOLO_BORDER_COLORPICKER).setDisable((selectedComponent instanceof Text || selectedComponent instanceof ImageView));
+            gui.getGUINode(GOLO_FOCUS_ANGLE_SLIDER).setDisable((selectedComponent instanceof Text || selectedComponent instanceof ImageView));
+            gui.getGUINode(GOLO_FOCUS_DISTANCE_SLIDER).setDisable((selectedComponent instanceof Text || selectedComponent instanceof ImageView));
+            gui.getGUINode(GOLO_CENTER_X_SLIDER).setDisable((selectedComponent instanceof Text || selectedComponent instanceof ImageView));
+            gui.getGUINode(GOLO_CENTER_Y_SLIDER).setDisable((selectedComponent instanceof Text || selectedComponent instanceof ImageView));
+            gui.getGUINode(GOLO_RADIUS_SLIDER).setDisable((selectedComponent instanceof Text || selectedComponent instanceof ImageView));
+            gui.getGUINode(GOLO_CYCLE_METHOD_COMBOBOX).setDisable((selectedComponent instanceof Text || selectedComponent instanceof ImageView)); 
+            gui.getGUINode(GOLO_STOP_ZERO_COLORPICKER).setDisable((selectedComponent instanceof Text || selectedComponent instanceof ImageView));
+            gui.getGUINode(GOLO_STOP_ONE_COLORPICKER).setDisable((selectedComponent instanceof Text || selectedComponent instanceof ImageView)); 
+            gui.getGUINode(GOLO_BORDER_RADIUS_SLIDER).setDisable((selectedComponent instanceof Text || selectedComponent instanceof ImageView));
             
-            if(selectedComponent instanceof ImageView==false){
-                ((Slider)gui.getGUINode(GOLO_BORDER_THICKNESS_SLIDER)).setValue(((Shape)selectedComponent).getStrokeWidth());
-                ((ColorPicker)gui.getGUINode(GOLO_BORDER_COLORPICKER)).setValue((Color)((Shape)selectedComponent).getStroke());
-            }
-            if(selectedComponent instanceof Rectangle)
+            if(selectedComponent instanceof Rectangle){
                 ((Slider)gui.getGUINode(GOLO_BORDER_RADIUS_SLIDER)).setValue(((Rectangle)selectedComponent).getArcWidth()/5);
-            
+            }
             if(selectedComponent instanceof Text){
                 ((ColorPicker)gui.getGUINode(GOLO_TEXT_COLOR_COLORPICKER)).setValue((Color)((Text)selectedComponent).getFill());
                 EventHandler<ActionEvent> handler = ((ComboBox)gui.getGUINode(GOLO_FONT_FAMILY_COMBOBOX)).getOnAction();
@@ -116,8 +115,23 @@ public class goloFoolproofDesign implements FoolproofDesign {
                 ((ComboBox)gui.getGUINode(GOLO_FONT_FAMILY_COMBOBOX)).setOnAction(handler);
                 EventHandler<ActionEvent> handler1 = ((ComboBox)gui.getGUINode(GOLO_FONT_SIZE_COMBOBOX)).getOnAction();
                 ((ComboBox)gui.getGUINode(GOLO_FONT_SIZE_COMBOBOX)).setOnAction(null);
-                ((ComboBox)gui.getGUINode(GOLO_FONT_SIZE_COMBOBOX)).getSelectionModel().select((int)((Text)selectedComponent).getFont().getSize());
+                ((ComboBox)gui.getGUINode(GOLO_FONT_SIZE_COMBOBOX)).getSelectionModel().select((Integer)((int)((Text)selectedComponent).getFont().getSize()));
                 ((ComboBox)gui.getGUINode(GOLO_FONT_SIZE_COMBOBOX)).setOnAction(handler1);
+            }
+            else if(selectedComponent instanceof Shape){
+                ((Slider)gui.getGUINode(GOLO_BORDER_THICKNESS_SLIDER)).setValue(((Shape)selectedComponent).getStrokeWidth());
+                ((ColorPicker)gui.getGUINode(GOLO_BORDER_COLORPICKER)).setValue((Color)((Shape)selectedComponent).getStroke());
+                ((Slider)gui.getGUINode(GOLO_FOCUS_ANGLE_SLIDER)).setValue(((RadialGradient)((Shape)selectedComponent).getFill()).getFocusAngle()/2);
+                ((Slider)gui.getGUINode(GOLO_FOCUS_DISTANCE_SLIDER)).setValue(((RadialGradient)((Shape)selectedComponent).getFill()).getFocusDistance()*10);
+                ((Slider)gui.getGUINode(GOLO_CENTER_X_SLIDER)).setValue(((RadialGradient)((Shape)selectedComponent).getFill()).getCenterX()*10);
+                ((Slider)gui.getGUINode(GOLO_CENTER_Y_SLIDER)).setValue(((RadialGradient)((Shape)selectedComponent).getFill()).getCenterY()*10);
+                ((Slider)gui.getGUINode(GOLO_RADIUS_SLIDER)).setValue(((RadialGradient)((Shape)selectedComponent).getFill()).getRadius()*10);
+                EventHandler<ActionEvent> handler = ((ComboBox)gui.getGUINode(GOLO_FONT_FAMILY_COMBOBOX)).getOnAction();
+                ((ComboBox)gui.getGUINode(GOLO_CYCLE_METHOD_COMBOBOX)).setOnAction(null);
+                ((ComboBox)gui.getGUINode(GOLO_CYCLE_METHOD_COMBOBOX)).getSelectionModel().select(((RadialGradient)((Shape)selectedComponent).getFill()).getCycleMethod());
+                ((ComboBox)gui.getGUINode(GOLO_CYCLE_METHOD_COMBOBOX)).setOnAction(handler);
+                ((ColorPicker)gui.getGUINode(GOLO_STOP_ZERO_COLORPICKER)).setValue(((RadialGradient)((Shape)selectedComponent).getFill()).getStops().get(0).getColor());
+                ((ColorPicker)gui.getGUINode(GOLO_STOP_ONE_COLORPICKER)).setValue(((RadialGradient)((Shape)selectedComponent).getFill()).getStops().get(1).getColor());
             }
    
         }

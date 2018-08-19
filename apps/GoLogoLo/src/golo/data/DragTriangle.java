@@ -30,7 +30,7 @@ public class DragTriangle extends Polygon implements Drag{
 	startY = 0.0;
         setStroke(Color.BLACK);
         setStrokeWidth(3);
-        setFill(new RadialGradient(0,0,0,0,0,true,CycleMethod.NO_CYCLE,new Stop(0,Color.WHITE)));
+       setFill(new RadialGradient(0,0,0,0,0,true,CycleMethod.NO_CYCLE,new Stop(0,Color.WHITE),new Stop(1,Color.WHITE)));
     }
     
     @Override
@@ -91,12 +91,12 @@ public class DragTriangle extends Polygon implements Drag{
 
     @Override
     public double getX() {
-        return DraggedX;
+        return getLayoutX();
     }
 
     @Override
     public double getY() {
-        return DraggedY;
+        return getLayoutY();
     }
 
     @Override
@@ -107,6 +107,14 @@ public class DragTriangle extends Polygon implements Drag{
     @Override
     public double getHeight() {
         return 0;
+    }
+    
+    public double getDraggedX() {
+        return DraggedX;
+    }
+
+    public double getDraggedY() {
+        return DraggedY;
     }
     
 }

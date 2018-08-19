@@ -1,5 +1,6 @@
 package golo.transactions;
 
+import golo.data.Anchor;
 import golo.data.DragRectangle;
 import jtps.jTPS_Transaction;
 import golo.data.goloData;
@@ -28,6 +29,9 @@ public class AddItem_Transaction implements jTPS_Transaction {
         data.selectItem(itemToAdd);
         if(data.getSelectedComponent()!=null){
             data.removeHighlight(data.getSelectedComponent());
+             if(data.getSelectedComponent() instanceof Anchor)
+                ((Anchor)data.getSelectedComponent()).getAttachedNode().deleteAnchors(data);
+            
             if(data.getSelectedComponent() instanceof Rectangle)
                 ((DragRectangle)data.getSelectedComponent()).deleteAnchors(data);
         }

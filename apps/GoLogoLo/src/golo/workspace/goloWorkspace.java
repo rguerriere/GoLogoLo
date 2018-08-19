@@ -27,6 +27,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import properties_manager.PropertiesManager;
 import golo.GoLogoLoApp;
+import golo.data.Anchor;
 import golo.data.Drag;
 import static golo.goloPropertyType.GOLO_FOOLPROOF_SETTINGS;
 import static golo.workspace.style.goloStyle.CLASS_GOLO_BUTTON;
@@ -38,6 +39,7 @@ import static golo.workspace.style.goloStyle.CLASS_GOLO_BOX;
 import golo.data.goloData;
 import golo.data.goloItemPrototype;
 import static golo.goloPropertyType.*;
+import golo.transactions.Drag_Transaction;
 import static golo.workspace.style.goloStyle.CLASS_GOLO_EDITTOOLBAR;
 import static golo.workspace.style.goloStyle.CLASS_GOLO_LIST;
 import static golo.workspace.style.goloStyle.CLASS_GOLO_LIST_BUTTONS;
@@ -45,8 +47,6 @@ import golo.workspace.foolproof.goloFoolproofDesign;
 import golo.transactions.SortItems_Transaction;
 import golo.workspace.controllers.MouseController;
 import golo.workspace.controllers.ComponentController;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -61,9 +61,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
-import javafx.scene.shape.Circle;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 /**
@@ -78,6 +77,7 @@ public class goloWorkspace extends AppWorkspaceComponent {
     MouseController mouseController;
     VBox goloPane;
     VBox editToolbar;
+    boolean Snap;
     
     public goloWorkspace(GoLogoLoApp app) {
         super(app);
@@ -91,6 +91,8 @@ public class goloWorkspace extends AppWorkspaceComponent {
         
     // THIS HELPER METHOD INITIALIZES ALL THE CONTROLS IN THE WORKSPACE
     private void initLayout() {
+        
+        
         // FIRST LOAD THE FONT FAMILIES FOR THE COMBO BOX
         PropertiesManager props = PropertiesManager.getPropertiesManager();
         
@@ -303,8 +305,6 @@ public class goloWorkspace extends AppWorkspaceComponent {
                 app.getFoolproofModule().updateAll();
         });
         
-        
-        
         focusAngleSlider.setOnMouseReleased(e->{
                 componentController.processGradient();
                 app.getFoolproofModule().updateAll();
@@ -465,22 +465,33 @@ public class goloWorkspace extends AppWorkspaceComponent {
 
     @Override
     public void processSnap() {
+        Snap=true;
+        Drag_Transaction transaction;
         Pane canvas = (Pane) app.getGUIModule().getGUINode(GOLO_CANVAS_PANE);
+        goloData data = (goloData)app.getDataComponent();
         if(((CheckBox)app.getGUIModule().getGUINode(SNAP_CHECKBOX)).isSelected()){
             canvas.setStyle("-fx-background-color: #FFF," +
                                     "linear-gradient(from 0.5px 0px to 10.5px 0px, repeat, black 5%, transparent 5%),\n" +
                                     "linear-gradient(from 0px 0.5px to 0px 10.5px, repeat, black 5%, transparent 5%);");
             ObservableList<Node> components = canvas.getChildren();
             for(int i=0;i<components.size();i++){
-                ((Drag)components.get(i)).setPosandSize((Math.round(((Drag)components.get(i)).getX() - 20)),
-                        (Math.round(((Drag)components.get(i)).getY() - 20)) , ((Drag)components.get(i)).getWidth() , ((Drag)components.get(i)).getHeight());
+                transaction = new Drag_Transaction(data, components.get(i));
+                if(components.get(i) instanceof Polygon){
+                    
+                }
+                else if(components.get(i) instanceof Anchor==false){
+                    ((Drag)components.get(i)).setPosandSize((Math.floor(((Drag)components.get(i)).getX() /20)*20),
+                        (Math.floor(((Drag)components.get(i)).getY() /20)*20) , ((Drag)components.get(i)).getWidth() , ((Drag)components.get(i)).getHeight());
+                    transaction.setAfter(components.get(i));
+                    app.processTransaction(transaction);
+                }
+                
             }
         }
         else
-            canvas.setStyle("-fx-background-color : white; -fx-border-color : grey;");
-        
-        
-        
-        
+            canvas.setStyle("-fx-background-color : white; -fx-border-color : grey;");  
+    }
+    public boolean getSnap(){
+        return Snap;
     }
 }

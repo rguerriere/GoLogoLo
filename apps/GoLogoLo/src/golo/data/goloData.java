@@ -38,8 +38,7 @@ public class goloData implements AppDataComponent {
     
     ComponentState state;
     Effect highlight;
-    public static final String HIGHLIGHT_HEX = "#5df777";
-    public static final Paint HIGHLIGHT_COLOR = Paint.valueOf(HIGHLIGHT_HEX);
+    public static final Paint HIGHLIGHT_COLOR = Color.CYAN;
 
     
     public goloData(GoLogoLoApp initApp) {

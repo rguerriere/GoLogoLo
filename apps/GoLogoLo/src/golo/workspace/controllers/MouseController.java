@@ -73,6 +73,8 @@ public class MouseController {
             dataManager.setState(SELECT_COMPONENT);
             Scene scene = app.getGUIModule().getPrimaryScene();
             scene.setCursor(Cursor.DEFAULT);
+            if(workspace.getSnap()==true)
+                workspace.processSnap();
             transaction.setAfter(dataManager.getSelectedComponent());
             app.processTransaction(transaction);
             app.getFileModule().markAsEdited(true);

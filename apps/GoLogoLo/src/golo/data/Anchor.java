@@ -6,6 +6,7 @@
 package golo.data;
 
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 /**
@@ -18,7 +19,7 @@ public class Anchor extends Circle implements Drag{
         double startX;
         double startY;
         AnchorPosition pos;
-        DragRectangle node;
+        DragRectangle node;        
 
         public Anchor(AnchorPosition initpos) {
             setRadius(15.0);
@@ -26,7 +27,8 @@ public class Anchor extends Circle implements Drag{
             startX = 0.0;
             startY = 0.0;
             pos = initpos;
-            
+            setFill(Color.YELLOW);
+            setStroke(Color.BLACK);
         }
 
 
