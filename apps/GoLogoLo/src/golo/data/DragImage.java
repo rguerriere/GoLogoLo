@@ -14,14 +14,14 @@ public class DragImage extends ImageView implements Drag{
     String file_path;
     goloItemPrototype attachedPrototype;
     
-    public DragImage(String path) {
-	setX(0.0);
-	setY(0.0);	
+    public DragImage(String initPath) {
+	setX(500.0);
+	setY(500.0);
+        file_path=initPath;
+        setImage(new Image(initPath));
 	setOpacity(1.0);
 	startX = 0.0;
 	startY = 0.0;
-        file_path=path;
-        setImage(new Image(path));
     }
     
     @Override
@@ -42,6 +42,15 @@ public class DragImage extends ImageView implements Drag{
 	startY = y;
     }
     
+    @Override
+    public goloItemPrototype getPrototype() {
+        return attachedPrototype;
+    }
+    
+    @Override
+    public void setPrototype(goloItemPrototype initproto){
+        attachedPrototype = initproto;   
+    }
     
     @Override
     public void size(int x, int y) {
@@ -82,15 +91,6 @@ public class DragImage extends ImageView implements Drag{
         return image;
     }
     
-    @Override
-    public goloItemPrototype getPrototype() {
-        return attachedPrototype;
-    }
     
-    @Override
-    public void setPrototype(goloItemPrototype initproto){
-        attachedPrototype = initproto;   
-    }
-
-        
+    
 }

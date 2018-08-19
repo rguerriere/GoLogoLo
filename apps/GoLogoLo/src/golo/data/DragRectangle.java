@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 /**
  *
@@ -43,6 +46,9 @@ public class DragRectangle extends Rectangle implements Drag{
         BottomLeft.setAttachedNode(this);
         anchors = new ArrayList<>();
         anchors.addAll(Arrays.asList(TopLeft,TopRight,BottomRight,BottomLeft));
+        setStroke(Color.BLACK);
+        setStrokeWidth(3);
+        setFill(new RadialGradient(0,0,0,0,0,true,CycleMethod.NO_CYCLE,new Stop(0,Color.WHITE)));
     }
     
     @Override

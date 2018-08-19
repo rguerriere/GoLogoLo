@@ -2,6 +2,9 @@ package golo.data;
 
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.Polygon;
 /**
  *
@@ -25,6 +28,9 @@ public class DragTriangle extends Polygon implements Drag{
         setStroke(Color.BLACK);
 	startX = 0.0;
 	startY = 0.0;
+        setStroke(Color.BLACK);
+        setStrokeWidth(3);
+        setFill(new RadialGradient(0,0,0,0,0,true,CycleMethod.NO_CYCLE,new Stop(0,Color.WHITE)));
     }
     
     @Override

@@ -1,6 +1,10 @@
 package golo.data;
 
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.Ellipse;
 /** 
  * @author Richie
@@ -18,6 +22,9 @@ public class DragEllipse extends Ellipse implements Drag {
 	setOpacity(1.0);
 	startX = 0.0;
 	startY = 0.0;
+        setStroke(Color.BLACK);
+        setStrokeWidth(3);
+        setFill(new RadialGradient(0,0,0,0,0,true,CycleMethod.NO_CYCLE,new Stop(0,Color.WHITE)));
     }
     
     

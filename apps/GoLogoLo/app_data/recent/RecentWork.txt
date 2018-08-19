@@ -1,3 +1,8 @@
+asdffdgdfg-work/asdffdgdfg.golo
+party time-work/party time.golo
+doo doo-work/doo doo.golo
+test-work/test.golo
+text-work/text.golo
 doodle-work/doodle
 sleepyboi-work/sleepyboi.golo
 GradingCriteria-work/GradingCriteria.tdlm

@@ -103,6 +103,16 @@ public class DragText extends Text  implements Drag{
         attachedPrototype = initproto;   
     }
     
+    public boolean isBold()
+    {
+        return bold;
+    }
+    
+    public boolean isItalic()
+    {
+        return italic;
+    }
+    
     public void toggleBold(){
         this.setFont(Font.font(this.getFont().getFamily(), bold ? FontWeight.NORMAL : FontWeight.BOLD , !italic ? FontPosture.REGULAR : FontPosture.ITALIC, this.getFont().getSize()));
         bold = !bold;   
