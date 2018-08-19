@@ -26,6 +26,7 @@ public class Anchor extends Circle implements Drag{
             startX = 0.0;
             startY = 0.0;
             pos = initpos;
+            
         }
 
 
