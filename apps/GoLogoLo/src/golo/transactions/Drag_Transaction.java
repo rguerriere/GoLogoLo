@@ -1,5 +1,6 @@
 package golo.transactions;
 
+import golo.data.Anchor;
 import golo.data.Drag;
 import golo.data.goloData;
 import javafx.scene.Node;
@@ -18,6 +19,9 @@ public class Drag_Transaction implements jTPS_Transaction {
     public Drag_Transaction(goloData initData, Node initOriginal) {
         data = initData;
         original = (Node)((Drag)initOriginal).clone();
+        if(initOriginal instanceof Anchor){
+            original = ((Anchor)initOriginal).getAttachedNode().clone();
+        }
     }
 
     @Override
@@ -25,7 +29,7 @@ public class Drag_Transaction implements jTPS_Transaction {
         
         if(After instanceof Text==false){ 
             ((Drag)After).setPosandSize(((Drag)AfterCloned).getX(),((Drag)AfterCloned).getY(), ((Drag)AfterCloned).getWidth(), ((Drag)AfterCloned).getHeight());
-            }
+        }
         else
             ((Drag)After).setPosandSize(((Drag)AfterCloned).getX(),((Drag)AfterCloned).getY(), 0, 0);
     }
@@ -38,7 +42,14 @@ public class Drag_Transaction implements jTPS_Transaction {
             ((Drag)After).setPosandSize(((Drag)original).getX(), ((Drag)original).getY(), 0, 0);
     }
     public void setAfter(Node after) {
-        After = after;
-        AfterCloned = ((Drag)after).clone();
+        
+        if(after instanceof Anchor){
+            AfterCloned = ((Anchor)after).getAttachedNode().clone();
+            After = ((Anchor)after).getAttachedNode();
+        }
+        else{
+            AfterCloned = ((Drag)after).clone();
+            After = after;
+        }
     }
 }

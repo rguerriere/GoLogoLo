@@ -87,8 +87,8 @@
          <property name="GOLO_REMOVE_COMPONENT_BUTTON_ICON"           value="RemoveComponent.png"></property>
          <property name="GOLO_BOLD_BUTTON_ICON"                       value="Bold.png"></property>
          <property name="GOLO_ITALICS_BUTTON_ICON"                    value="Italics.png"></property>
-         <property name="GOLO_LOWERCASE_BUTTON_ICON"                  value="ToLowerCase.png"></property>
-         <property name="GOLO_UPPERCASE_BUTTON_ICON"                  value="ToUpperCase.png"></property>
+         <property name="GOLO_TEXT_SIZE_UP_BUTTON_ICON"                  value="TextSizeUp.png"></property>
+         <property name="GOLO_TEXT_SIZE_DOWN_BUTTON_ICON"                  value="TextSizeDown.png"></property>
          <property name="GOLO_TEXT_COLOR_BUTTON_ICON"                 value="TextColor.png"></property>
          <property name="HOME_BUTTON_ICON"                       value="Home.png"></property>
          <property name="ZOOM_IN_BUTTON_ICON"                    value="ZoomIn.png"></property>

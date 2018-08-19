@@ -171,77 +171,65 @@ public class goloWorkspace extends AppWorkspaceComponent {
         
         Button BoldButton             = ComponentBuilder.buildIconButton(GOLO_BOLD_BUTTON,      row2Box2,    null,   CLASS_GOLO_BUTTON, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
         Button ItalicsButton          = ComponentBuilder.buildIconButton(GOLO_ITALICS_BUTTON,      row2Box2,    null,   CLASS_GOLO_BUTTON, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
-        Button LowercaseButton        = ComponentBuilder.buildIconButton(GOLO_LOWERCASE_BUTTON,      row2Box2,    null,   CLASS_GOLO_BUTTON, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
-        Button UppercaseButton        = ComponentBuilder.buildIconButton(GOLO_UPPERCASE_BUTTON,      row2Box2,    null,   CLASS_GOLO_BUTTON, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
+        Button TextSizeUpButton        = ComponentBuilder.buildIconButton(GOLO_TEXT_SIZE_UP_BUTTON,      row2Box2,    null,   CLASS_GOLO_BUTTON, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
+        Button TextSizeDownButton        = ComponentBuilder.buildIconButton(GOLO_TEXT_SIZE_DOWN_BUTTON,      row2Box2,    null,   CLASS_GOLO_BUTTON, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
         ColorPicker TextColor         = ComponentBuilder.buildColorPicker(GOLO_TEXT_COLOR_COLORPICKER,      row2Box2,    null,   CLASS_GOLO_BUTTON, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
         // ROW3
         VBox row3 = ComponentBuilder.buildVBox(GOLO_ITEM_BUTTONS_PANE,         editToolbar,          null,   CLASS_GOLO_EDITTOOLBAR, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         row3.setSpacing(5);
-        Label borderThicknessLabel = new Label("Border Thickness: ");
+        Label borderThicknessLabel = ComponentBuilder.buildLabel(GOLO_BORDER_THICKNESS_LABEL,         row3,          null,   null, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         borderThicknessLabel.setTextFill(Color.WHITE);
-        row3.getChildren().add(borderThicknessLabel);
+        
         Slider borderThicknessSlider = ComponentBuilder.buildSlider(GOLO_BORDER_THICKNESS_SLIDER,      row3,    null,   CLASS_GOLO_BUTTON,0,10, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
 
-        Label borderColorLabel = new Label("Border Color: ");
+        Label borderColorLabel = ComponentBuilder.buildLabel(GOLO_BORDER_LABEL,         row3,          null,   null, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         borderColorLabel.setTextFill(Color.WHITE);
-        row3.getChildren().add(borderColorLabel);
         
         ColorPicker borderColor = ComponentBuilder.buildColorPicker(GOLO_BORDER_COLORPICKER,      row3,    null,   CLASS_GOLO_BUTTON, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
 
-        Label borderRadiusLabel = new Label("Border Radius: ");
+        Label borderRadiusLabel = ComponentBuilder.buildLabel(GOLO_BORDER_RADIUS_LABEL,         row3,          null,   null, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         borderRadiusLabel.setTextFill(Color.WHITE);
-        row3.getChildren().add(borderRadiusLabel);
         Slider borderRadiusSlider    = ComponentBuilder.buildSlider(GOLO_BORDER_RADIUS_SLIDER,      row3,    null,   CLASS_GOLO_BUTTON,0,10, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
        
         // ROW4
         VBox row4 = ComponentBuilder.buildVBox(GOLO_ITEM_BUTTONS_PANE,         editToolbar,          null,   CLASS_GOLO_EDITTOOLBAR, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         
-        Label colorGradientLabel     = new Label("Color Gradient");
+        Label colorGradientLabel     = ComponentBuilder.buildLabel(GOLO_COLOR_GRADIENT_LABEL,         row4,          null,   null, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         colorGradientLabel.setStyle("-fx-font: 24 arial;");
         colorGradientLabel.setTextFill(Color.WHITE);
-        row4.getChildren().add(colorGradientLabel);
-
         
-        Label focusAngleLabel        = new Label("Focus Angle: ");
+        Label focusAngleLabel        = ComponentBuilder.buildLabel(GOLO_FOCUS_ANGLE_LABEL,         row4,          null,   null, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         focusAngleLabel.setTextFill(Color.WHITE);
-        row4.getChildren().add(focusAngleLabel);
         Slider focusAngleSlider      = ComponentBuilder.buildSlider(GOLO_FOCUS_ANGLE_SLIDER,      row4,    null,   CLASS_GOLO_BUTTON,0,10, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
         
-        Label focusDistanceLabel     = new Label("Focus Distance: ");
+        Label focusDistanceLabel     = ComponentBuilder.buildLabel(GOLO_FOCUS_DISTANCE_LABEL,         row4,          null,   null, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         focusDistanceLabel.setTextFill(Color.WHITE);
-        row4.getChildren().add(focusDistanceLabel);
         Slider focusDistanceSlider   = ComponentBuilder.buildSlider(GOLO_FOCUS_DISTANCE_SLIDER,      row4,    null,   CLASS_GOLO_BUTTON,0,10, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
         
-        Label centerXLabel           = new Label("Center X: ");
+        Label centerXLabel           = ComponentBuilder.buildLabel(GOLO_CENTER_X_LABEL,         row4,          null,   null, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         centerXLabel.setTextFill(Color.WHITE);
-        row4.getChildren().add(centerXLabel);
         Slider centerXSlider         = ComponentBuilder.buildSlider(GOLO_CENTER_X_SLIDER,      row4,    null,   CLASS_GOLO_BUTTON,0,10, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
         
-        Label centerYLabel           = new Label("Center Y: ");
+        Label centerYLabel           = ComponentBuilder.buildLabel(GOLO_CENTER_Y_LABEL,         row4,          null,   null, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         centerYLabel.setTextFill(Color.WHITE);
-        row4.getChildren().add(centerYLabel);
         Slider centerYSlider         = ComponentBuilder.buildSlider(GOLO_CENTER_Y_SLIDER,      row4,    null,   CLASS_GOLO_BUTTON,0,10, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
         
-        Label radiusSliderLabel      = new Label("Radius: ");
+        Label radiusSliderLabel      = ComponentBuilder.buildLabel(GOLO_RADIUS_LABEL,         row4,          null,   null, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         radiusSliderLabel.setTextFill(Color.WHITE);
-        row4.getChildren().add(radiusSliderLabel);
         Slider radiusSlider          = ComponentBuilder.buildSlider(GOLO_RADIUS_SLIDER,      row4,    null,   CLASS_GOLO_BUTTON,0,10, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
         
-        Label cycleMethodlabel       = new Label("Cycle Method: ");
+        Label cycleMethodlabel       = ComponentBuilder.buildLabel(GOLO_CYCLE_METHOD_LABEL,         row4,          null,   null, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         cycleMethodlabel.setTextFill(Color.WHITE);
-        row4.getChildren().add(cycleMethodlabel);
         ComboBox<CycleMethod> cycleMethod = ComponentBuilder.buildComboBox(GOLO_CYCLE_METHOD_COMBOBOX,GOLO_EMPTY,GOLO_EMPTY,      row4,    null,   null, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
         cycleMethod.getItems().addAll(CycleMethod.NO_CYCLE,CycleMethod.REFLECT,CycleMethod.REPEAT);
         cycleMethod.getSelectionModel().select(0);
         
-        Label stopZeroColorLabel     = new Label("Stop 0 Color: ");
+        Label stopZeroColorLabel     = ComponentBuilder.buildLabel(GOLO_STOP_ZERO_LABEL,         row4,          null,   null, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         stopZeroColorLabel.setTextFill(Color.WHITE);
-        row4.getChildren().add(stopZeroColorLabel);
         ColorPicker stopZeroColor    = ComponentBuilder.buildColorPicker(GOLO_STOP_ZERO_COLORPICKER,      row4,    null,   CLASS_GOLO_BUTTON, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
         
-        Label stopOneColorLabel      = new Label("Stop 1 Color: ");
+        Label stopOneColorLabel      = ComponentBuilder.buildLabel(GOLO_STOP_ONE_LABEL,         row4,          null,   null, HAS_KEY_HANDLER,     FOCUS_TRAVERSABLE,  ENABLED);
         stopOneColorLabel.setTextFill(Color.WHITE);
-        row4.getChildren().add(stopOneColorLabel);
         ColorPicker stopOneColor     = ComponentBuilder.buildColorPicker(GOLO_STOP_ONE_COLORPICKER,      row4,    null,   CLASS_GOLO_BUTTON, HAS_KEY_HANDLER,   FOCUS_TRAVERSABLE,  DISABLED);
         
         
@@ -270,17 +258,18 @@ public class goloWorkspace extends AppWorkspaceComponent {
         //TEXT CONTROLS
         BoldButton.setOnAction(e->{
             componentController.processBold();
+            app.getFoolproofModule().updateAll();
         });
         ItalicsButton.setOnAction(e->{
             componentController.processItalic();
             app.getFoolproofModule().updateAll();
         });
-        LowercaseButton.setOnAction(e->{
-            componentController.processLowercase();
+        TextSizeUpButton.setOnAction(e->{
+            componentController.processTextSizeUp();
             app.getFoolproofModule().updateAll();
         });
-        UppercaseButton.setOnAction(e->{
-            componentController.processUppercase();
+        TextSizeDownButton.setOnAction(e->{
+            componentController.processTextSizeDown();
             app.getFoolproofModule().updateAll();
         });
         
@@ -483,8 +472,8 @@ public class goloWorkspace extends AppWorkspaceComponent {
                                     "linear-gradient(from 0px 0.5px to 0px 10.5px, repeat, black 5%, transparent 5%);");
             ObservableList<Node> components = canvas.getChildren();
             for(int i=0;i<components.size();i++){
-                ((Drag)components.get(i)).setX((Math.round(((Drag)components.get(i)).getX() - 20)));
-                ((Drag)components.get(i)).setY((Math.round(((Drag)components.get(i)).getY() - 20)));
+                ((Drag)components.get(i)).setPosandSize((Math.round(((Drag)components.get(i)).getX() - 20)),
+                        (Math.round(((Drag)components.get(i)).getY() - 20)) , ((Drag)components.get(i)).getWidth() , ((Drag)components.get(i)).getHeight());
             }
         }
         else

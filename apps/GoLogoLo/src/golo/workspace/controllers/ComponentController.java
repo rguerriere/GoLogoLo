@@ -3,7 +3,6 @@ package golo.workspace.controllers;
 import static djf.AppPropertyType.ADD_IMAGE_TITLE;
 import static djf.AppPropertyType.ADD_TEXT_CONTENT;
 import static djf.AppPropertyType.ADD_TEXT_TITLE;
-import static djf.AppPropertyType.LOAD_WORK_TITLE;
 import golo.data.goloData;
 import djf.AppTemplate;
 import static djf.AppTemplate.PATH_WORK;
@@ -15,8 +14,6 @@ import golo.data.DragRectangle;
 import golo.data.DragText;
 import golo.data.DragTriangle;
 import golo.data.goloItemPrototype;
-import static golo.goloPropertyType.GOLO_BOLD_BUTTON;
-import static golo.goloPropertyType.GOLO_FONT_FAMILY_COMBOBOX;
 import golo.transactions.AddItem_Transaction;
 import golo.transactions.Border_Transaction;
 import golo.transactions.ColorG_Transaction;
@@ -25,12 +22,7 @@ import golo.transactions.MoveUpItem_Transaction;
 import golo.transactions.RemoveItem_Transaction;
 import golo.transactions.Text_Transaction;
 import java.io.File;
-import javafx.scene.Node;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import properties_manager.PropertiesManager;
 
@@ -109,7 +101,6 @@ public class ComponentController
     }
     
     public void processAddTriangle(){
-    
          dataManager = (goloData)app.getDataComponent();    
          DragTriangle initTriangle = new DragTriangle();
          goloItemPrototype proto = new goloItemPrototype("unnamed", "Triangle",initTriangle);
@@ -117,7 +108,6 @@ public class ComponentController
          AddItem_Transaction transaction = new AddItem_Transaction(dataManager, proto);
          app.processTransaction(transaction);
          app.getFileModule().markAsEdited(true);
-    
     }
     
     public void processRemoveComponent(){
@@ -155,14 +145,14 @@ public class ComponentController
         app.processTransaction(transaction);
         app.getFileModule().markAsEdited(true);
     }
-    public void processLowercase(){
-        Text_Transaction transaction = new Text_Transaction((GoLogoLoApp)app, dataManager.getSelectedItem(),"lowercase");
+    public void processTextSizeUp(){
+        Text_Transaction transaction = new Text_Transaction((GoLogoLoApp)app, dataManager.getSelectedItem(),"inc_size");
         app.processTransaction(transaction);
         app.getFileModule().markAsEdited(true);
         
     }
-    public void processUppercase(){
-        Text_Transaction transaction = new Text_Transaction((GoLogoLoApp)app, dataManager.getSelectedItem(),"uppercase");
+    public void processTextSizeDown(){
+        Text_Transaction transaction = new Text_Transaction((GoLogoLoApp)app, dataManager.getSelectedItem(),"dec_size");
         app.processTransaction(transaction);
         app.getFileModule().markAsEdited(true);
     }

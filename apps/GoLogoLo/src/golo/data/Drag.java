@@ -19,8 +19,6 @@ public interface Drag {
     
     public double getX();
     public double getY();
-    public void setX(double x);
-    public void setY(double y);
     public double getWidth();
     public double getHeight();
     public void setPosandSize(double initX, double initY, double initWidth, double initHeight);

@@ -68,6 +68,13 @@
         <property name="NEW_SUCCESS_CONTENT"	value="Work Created but not yet Saved"></property>
         <property name="NEW_ERROR_TITLE"        value="Warning: Error"></property>
         <property name="NEW_ERROR_CONTENT"      value="An error occured creating new work."></property>
+        
+        <!-- EXPORT DIALOGS -->	
+        <property name="EXPORT_WORK_TITLE"    value="Export Work"></property>
+        <property name="EXPORT_SUCCESS_TITLE"      value="Export Complete"></property>
+        <property name="EXPORT_SUCCESS_CONTENT"	value="Export successful. PNG created."></property>
+        <property name="EXPORT_ERROR_TITLE"        value="Export failed."></property>
+        <property name="EXPORT_ERROR_CONTENT"      value="There was an error while exporting"></property>
 
         <!-- LOAD FEEDBACK DIALOGS -->
         <property name="LOAD_WORK_TITLE"        value="Load Work"></property>
@@ -76,7 +83,6 @@
         <property name="LOAD_ERROR_TITLE"       value="Loading Error"></property>        
         <property name="LOAD_ERROR_CONTENT"     value="Loading has Failed. Likely there is a File Formating problem."></property>
 
-         <property name="EXPORT_WORK_TITLE"        value="Load Work"></property>
         <!-- ADD TEXT DIALOGS -->
         <property name="ADD_TEXT_TITLE"        value="Add Text"></property>
         <property name="ADD_TEXT_CONTENT"      value="Please enter text: "></property>
@@ -96,7 +102,7 @@
 
         <!-- ABOUT DIALOG -->
         <property name="ABOUT_TITLE"            value="About GOLO"></property>
-        <property name="ABOUT_CONTENT"          value="GOLO, the To Do List Maker - Debugging Enterprises - © 2017"></property>
+        <property name="ABOUT_CONTENT"          value="GOLO - Debugging Enterprises - © 2017"></property>
         <property name="EXPORT_TITLE"            value="Export Logo"></property>
         <property name="ADD_IMAGE_TITLE"        value="Add Image"></property>
         <!-- ENGLISH LANGUAGE SETTINGS SPECIFICALLY FOR GOLO CONTROLS -->
@@ -121,10 +127,25 @@
         <property name="GOLO_REMOVE_COMPONENT_BUTTON_TOOLTIP"       value="Remove Component"></property>
         <property name="GOLO_BOLD_BUTTON_TOOLTIP"                   value="Bold"></property>
         <property name="GOLO_ITALICS_BUTTON_TOOLTIP"                value="Italics"></property>
-        <property name="GOLO_LOWERCASE_BUTTON_TOOLTIP"              value="To LowerCase"></property>
-        <property name="GOLO_UPPERCASE_BUTTON_TOOLTIP"              value="To UpperCase"></property>
+        <property name="GOLO_TEXT_SIZE_UP_BUTTON_TOOLTIP"           value="Increase Text Size"></property>
+        <property name="GOLO_TEXT_SIZE_DOWN_BUTTON_TOOLTIP"         value="Decrease Text Size"></property>
         <property name="GOLO_TEXT_COLOR_BUTTON_TOOLTIP"             value="Change Text Color"></property>
 
+        
+        <!-- LABEL TEXT FOR TOOLBAR -->
+        <property name="GOLO_BORDER_THICKNESS_LABEL_TEXT"           value="Border Thickness"></property>
+        <property name="GOLO_BORDER_RADIUS_LABEL_TEXT"              value="Border Radius"></property>
+        <property name="GOLO_BORDER_LABEL_TEXT"                     value="Border Label"></property>
+        <property name="GOLO_FOCUS_ANGLE_LABEL_TEXT"                value="Focus Angle"></property>
+        <property name="GOLO_COLOR_GRADIENT_LABEL_TEXT"             value="Color Gradient"></property>
+        <property name="GOLO_FOCUS_DISTANCE_LABEL_TEXT"             value="Focus Distance"></property>
+        <property name="GOLO_CENTER_X_LABEL_TEXT"                   value="Center X"></property>
+        <property name="GOLO_CENTER_Y_LABEL_TEXT"                   value="Center Y"></property>
+        <property name="GOLO_RADIUS_LABEL_TEXT"                     value="Radius"></property>
+        <property name="GOLO_CYCLE_METHOD_LABEL_TEXT"               value="Cycle Method"></property>
+        <property name="GOLO_STOP_ZERO_LABEL_TEXT"                  value="Stop 0"></property>
+        <property name="GOLO_STOP_ONE_LABEL_TEXT"                   value="Stop 1"></property>
+        
 
         <!-- LANGUAGE-DEPENDENT TEXT FOR ITEM DIALOG CONTROLS -->
         <property name="GOLO_ITEM_DIALOG_HEADER_TEXT"               value="Add/Edit Items"></property>

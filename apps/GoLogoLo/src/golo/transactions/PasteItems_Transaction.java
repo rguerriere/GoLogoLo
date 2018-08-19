@@ -3,9 +3,11 @@ package golo.transactions;
 import jtps.jTPS_Transaction;
 import golo.GoLogoLoApp;
 import golo.data.Drag;
+import golo.data.DragRectangle;
 import golo.data.goloData;
 import golo.data.goloItemPrototype;
 import javafx.scene.Node;
+import javafx.scene.shape.Rectangle;
 
 /**
  *
@@ -42,6 +44,9 @@ public class PasteItems_Transaction implements jTPS_Transaction {
             data.addComponentAt(ComponentsToPaste, data.getShapes().size() - index);
             ((Drag)ComponentsToPaste).setPosandSize( ((Drag)ComponentsToPaste).getX() + 20, ((Drag)ComponentsToPaste).getY() + 20, ((Drag)ComponentsToPaste).getWidth(), ((Drag)ComponentsToPaste).getHeight());
         }
+        if(ComponentsToPaste instanceof Rectangle){
+            ((DragRectangle)ComponentsToPaste).addAnchors(data);
+        }
         data.clearSelected();
         if(data.getSelectedComponent()!=null)
             data.removeHighlight(data.getSelectedComponent());
@@ -55,6 +60,9 @@ public class PasteItems_Transaction implements jTPS_Transaction {
         goloData data = (goloData)app.getDataComponent();
         data.removeItem(itemToPaste);
         data.removeComponent(ComponentsToPaste);
+        if(ComponentsToPaste instanceof Rectangle){
+            ((DragRectangle)ComponentsToPaste).deleteAnchors(data);
+        }
         data.removeHighlight(ComponentsToPaste);
         
     }   

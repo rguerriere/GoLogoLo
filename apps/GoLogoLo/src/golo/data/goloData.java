@@ -16,12 +16,12 @@ import static golo.data.ComponentState.SELECT_COMPONENT;
 import static golo.goloPropertyType.GOLO_ITEMS_TABLE_VIEW;
 import golo.workspace.goloWorkspace;
 import javafx.scene.Node;
-import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 
 /**
  * @author McKillaGorilla
@@ -207,6 +207,10 @@ public class goloData implements AppDataComponent {
         components.remove(index);
     }
     
+    public int getComponentIndex(Node node) {
+        return components.indexOf(node);
+    }
+    
     public Node getFrontComponent(int x, int y) {
 	for (int i = components.size() - 1; i >= 0; i--) {
 	    Node Component = (Node)components.get(i);
@@ -252,8 +256,7 @@ public class goloData implements AppDataComponent {
     
     
     public Node selectFrontComponent(int x, int y) {
-	Node component = getFrontComponent(x, y);
- 	goloWorkspace workspace = (goloWorkspace)app.getWorkspaceComponent();       
+	Node component = getFrontComponent(x, y);     
 	if (component == selectedComponent)
         {
             if (component != null) 
@@ -265,10 +268,19 @@ public class goloData implements AppDataComponent {
 	if (selectedComponent != null) 
         {
 	    removeHighlight(selectedComponent);
+            if(selectedComponent instanceof Anchor && !((Anchor)selectedComponent).getAttachedNode().getAnchors().contains(component) &&
+                    !((Anchor)selectedComponent).getAttachedNode().equals(component)) 
+                ((Anchor)selectedComponent).getAttachedNode().deleteAnchors(this);
+            if(selectedComponent instanceof Rectangle && !((DragRectangle)selectedComponent).getAnchors().contains(component))
+                ((DragRectangle)selectedComponent).deleteAnchors(this);
             selectedComponent = null;
-	}
+	}   
 	if (component != null) 
         {
+            if(component instanceof Rectangle){
+                if(!components.containsAll(((DragRectangle)component).anchors))        
+                    ((DragRectangle)component).addAnchors(this);
+            }
 	    addHighlight(component);
 	    ((Drag)component).start(x, y);
             selectedComponent = component;

@@ -1,5 +1,7 @@
 package golo.data;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -12,6 +14,7 @@ public class DragRectangle extends Rectangle implements Drag{
     double startX;
     double startY;
     goloItemPrototype attachedPrototype;
+    ArrayList<Anchor> anchors;
     
     public DragRectangle() {
 	setX(500.0);
@@ -22,6 +25,24 @@ public class DragRectangle extends Rectangle implements Drag{
         setStroke(Color.BLACK);
 	startX = 0.0;
 	startY = 0.0;
+        Anchor TopLeft = new Anchor(AnchorPosition.TL);
+        Anchor TopRight = new Anchor(AnchorPosition.TR);
+        Anchor BottomRight = new Anchor(AnchorPosition.BR);
+        Anchor BottomLeft = new Anchor(AnchorPosition.BL);
+        TopLeft.centerXProperty().bind(xProperty());
+        TopLeft.centerYProperty().bind(yProperty());      
+        TopRight.centerXProperty().bind(xProperty().add(widthProperty()));
+        TopRight.centerYProperty().bind(yProperty());  
+        BottomRight.centerXProperty().bind(xProperty().add(widthProperty()));
+        BottomRight.centerYProperty().bind(yProperty().add(heightProperty()));
+        BottomLeft.centerXProperty().bind(xProperty());
+        BottomLeft.centerYProperty().bind(yProperty().add(heightProperty())); 
+        TopLeft.setAttachedNode(this);
+        TopRight.setAttachedNode(this);
+        BottomRight.setAttachedNode(this);
+        BottomLeft.setAttachedNode(this);
+        anchors = new ArrayList<>();
+        anchors.addAll(Arrays.asList(TopLeft,TopRight,BottomRight,BottomLeft));
     }
     
     @Override
@@ -66,8 +87,8 @@ public class DragRectangle extends Rectangle implements Drag{
    @Override
    public Node clone(){
         DragRectangle copy=new DragRectangle();
-        copy.xProperty().set(this.xProperty().get());
-	copy.yProperty().set(this.yProperty().get());
+        copy.setX(getX());
+	copy.setY(getY());
 	copy.widthProperty().set(this.widthProperty().get());
 	copy.heightProperty().set(this.heightProperty().get());	
         copy.setFill(getFill());
@@ -86,5 +107,16 @@ public class DragRectangle extends Rectangle implements Drag{
         attachedPrototype = initproto;   
     }
     
+    public void deleteAnchors(goloData data){
+        data.getShapes().removeAll(anchors);
+    }  
+    
+    public ArrayList<Anchor> getAnchors(){
+        return anchors;
+    } 
+    
+    public void addAnchors(goloData data){
+        data.getShapes().addAll(data.getComponentIndex(this) + 1, anchors);
+    }  
     
 }

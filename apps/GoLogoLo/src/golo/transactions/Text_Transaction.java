@@ -43,10 +43,10 @@ public class Text_Transaction implements jTPS_Transaction {
                component.toggleBold();
             else if(transaction_type.equals("italic"))
                component.toggleItalic();
-            else if(transaction_type.equals("lowercase"))
-               component.setText(component.getText().toLowerCase());
-            else if(transaction_type.equals("uppercase"))
-               component.setText(component.getText().toUpperCase());
+            else if(transaction_type.equals("inc_size"))
+               component.setSize((Integer)(int)component.getFont().getSize()+4);
+            else if(transaction_type.equals("dec_size"))
+               component.setSize((Integer)(int)component.getFont().getSize()-4);
             else if(transaction_type.equals("text_color"))
                component.setFill(((ColorPicker)app.getGUIModule().getGUINode(GOLO_TEXT_COLOR_COLORPICKER)).getValue());
             else if(transaction_type.equals("font_family"))
