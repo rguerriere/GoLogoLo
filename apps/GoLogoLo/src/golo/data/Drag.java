@@ -21,9 +21,14 @@ public interface Drag {
     public double getY();
     public double getWidth();
     public double getHeight();
+    
     public void setPosandSize(double initX, double initY, double initWidth, double initHeight);
+    
     public String getShapeType();
+    
     public Node clone();
+    
     public goloItemPrototype getPrototype();
-    public void setPrototype(goloItemPrototype initproto);
+    
+    public void setPrototype(goloItemPrototype initProto);
 }

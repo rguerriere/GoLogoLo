@@ -33,9 +33,9 @@ public class PasteItems_Transaction implements jTPS_Transaction {
     @Override
     public void doTransaction() {
         goloData data = (goloData)app.getDataComponent();
-        int index = pasteIndex+1;
-        if(index==0){
-            data.addItemAt(itemToPaste,0);
+        int index = pasteIndex + 1;
+        if(index == 0){
+            data.addItemAt(itemToPaste, 0);
             data.addComponent(ComponentsToPaste);
             ((Drag)ComponentsToPaste).setPosandSize( ((Drag)ComponentsToPaste).getX() + 20, ((Drag)ComponentsToPaste).getY() + 20, ((Drag)ComponentsToPaste).getWidth(), ((Drag)ComponentsToPaste).getHeight());
         }

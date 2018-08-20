@@ -33,10 +33,10 @@ public class MoveUpItem_Transaction implements jTPS_Transaction {
         goloData data = (goloData)app.getDataComponent();
         TableView tableView = (TableView) app.getGUIModule().getGUINode(GOLO_ITEMS_TABLE_VIEW);
         int index = data.getItemIndex(ItemMoved);
-            if(index>0)
+            if(index > 0)
             {
-                tableView.getItems().add(index-1, tableView.getItems().remove(index));
-                tableView.getSelectionModel().clearAndSelect(index-1);
+                tableView.getItems().add(index - 1, tableView.getItems().remove(index));
+                tableView.getSelectionModel().clearAndSelect(index - 1);
             }      
         app.getFoolproofModule().updateAll();
         if (ItemMoved.getNode() != null) {
@@ -48,7 +48,7 @@ public class MoveUpItem_Transaction implements jTPS_Transaction {
             if(index == data.getShapes().size())
                 data.addComponent(ItemMoved.getNode());
             else
-                data.addComponentAt(ItemMoved.getNode(), index+1);
+                data.addComponentAt(ItemMoved.getNode(), index + 1);
             
             if(ItemMoved.getNode() instanceof Rectangle){
                 ((DragRectangle)ItemMoved.getNode()).addAnchors(data);
@@ -61,12 +61,12 @@ public class MoveUpItem_Transaction implements jTPS_Transaction {
         goloData data = (goloData)app.getDataComponent();
         TableView tableView = (TableView) app.getGUIModule().getGUINode(GOLO_ITEMS_TABLE_VIEW);
         int index = data.getItemIndex(ItemMoved);
-        if(index<tableView.getItems().size()-1)
+        if(index<tableView.getItems().size() - 1)
             {
                 // swap items
-                tableView.getItems().add(index+1, tableView.getItems().remove(index));
+                tableView.getItems().add(index + 1, tableView.getItems().remove(index));
                 // select item at new position
-                tableView.getSelectionModel().clearAndSelect(index+1);
+                tableView.getSelectionModel().clearAndSelect(index + 1);
             }
         app.getFoolproofModule().updateAll();
         if (ItemMoved.getNode() != null) {
@@ -75,7 +75,7 @@ public class MoveUpItem_Transaction implements jTPS_Transaction {
             if(ItemMoved.getNode() instanceof Rectangle){
                 ((DragRectangle)ItemMoved.getNode()).deleteAnchors(data);
             }
-            data.addComponentAt(ItemMoved.getNode(), index-1);
+            data.addComponentAt(ItemMoved.getNode(), index - 1);
             if(ItemMoved.getNode() instanceof Rectangle){
                 ((DragRectangle)ItemMoved.getNode()).addAnchors(data);
             }

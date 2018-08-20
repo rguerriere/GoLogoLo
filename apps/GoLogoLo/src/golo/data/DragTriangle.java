@@ -14,8 +14,10 @@ public class DragTriangle extends Polygon implements Drag{
 
     double startX;
     double startY;
+    
     double DraggedX;
     double DraggedY;
+    
     goloItemPrototype attachedPrototype;
     
     public DragTriangle() {
@@ -24,13 +26,16 @@ public class DragTriangle extends Polygon implements Drag{
             200d, 800d,
             500d, 500d
         );
+        
 	setOpacity(1.0);
         setStroke(Color.BLACK);
+        
 	startX = 0.0;
 	startY = 0.0;
+        
         setStroke(Color.BLACK);
         setStrokeWidth(3);
-       setFill(new RadialGradient(0,0,0,0,0,true,CycleMethod.NO_CYCLE,new Stop(0,Color.WHITE),new Stop(1,Color.WHITE)));
+        setFill(new RadialGradient(0,0,0,0,0,true,CycleMethod.NO_CYCLE,new Stop(0,Color.WHITE),new Stop(1,Color.WHITE)));
     }
     
     @Override
@@ -43,12 +48,14 @@ public class DragTriangle extends Polygon implements Drag{
     public void drag(int x, int y) {
 	double dragX = x - startX;
 	double dragY = y - startY;
-        for(int i=0;i<getPoints().size();i+=2){
+        for(int i = 0; i < getPoints().size(); i += 2){     
+            
             getPoints().set(i, dragX + getPoints().get(i));
-            getPoints().set(i+1, dragY + getPoints().get(i+1));
+            getPoints().set(i + 1, dragY + getPoints().get(i + 1));
         }
         DraggedX+= dragX;
         DraggedY+= dragY;
+        
         startX = x;
 	startY = y;
     }
@@ -71,12 +78,12 @@ public class DragTriangle extends Polygon implements Drag{
     
    @Override
    public Node clone(){
-        DragTriangle copy=new DragTriangle();
-        copy.getPoints().addAll(getPoints());
-        copy.setFill(getFill());
-        copy.setStroke(this.getStroke());
-        copy.setStrokeWidth(this.getStrokeWidth());
-        return (Node)copy;
+        DragTriangle cloney = new DragTriangle();
+        cloney.getPoints().addAll(getPoints());
+        cloney.setFill(getFill());
+        cloney.setStroke(this.getStroke());
+        cloney.setStrokeWidth(this.getStrokeWidth());
+        return (Node)cloney;
     }
 
     @Override

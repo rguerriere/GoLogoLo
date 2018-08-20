@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -7,7 +7,6 @@ package golo.transactions;
 
 import golo.GoLogoLoApp;
 import golo.data.Drag;
-import golo.data.goloData;
 import golo.data.goloItemPrototype;
 import javafx.scene.Node;
 import javafx.scene.shape.Ellipse;

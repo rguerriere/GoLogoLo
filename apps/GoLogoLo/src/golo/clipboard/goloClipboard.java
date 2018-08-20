@@ -2,7 +2,6 @@ package golo.clipboard;
 
 import djf.components.AppClipboardComponent;
 import golo.GoLogoLoApp;
-import golo.data.Drag;
 import golo.data.goloData;
 import golo.data.goloItemPrototype;
 import golo.transactions.CutItems_Transaction;
@@ -16,8 +15,10 @@ import javafx.scene.Node;
  */
 public class goloClipboard implements AppClipboardComponent {
     GoLogoLoApp app;
+    
     goloItemPrototype clipboardCutItem;
     goloItemPrototype clipboardCopiedItem;
+    
     Node clipboardCopiedComponent;
     
     public goloClipboard(GoLogoLoApp initApp) {

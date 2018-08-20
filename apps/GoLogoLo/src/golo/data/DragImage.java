@@ -11,14 +11,19 @@ import javafx.scene.image.ImageView;
 public class DragImage extends ImageView implements Drag{
     double startX;
     double startY;
+    
     String file_path;
     goloItemPrototype attachedPrototype;
     
-    public DragImage(String initPath) {
+    public DragImage(String initPath) 
+    {
 	setX(500.0);
 	setY(500.0);
+        
         file_path=initPath;
+        
         setImage(new Image(initPath));
+        
 	setOpacity(1.0);
 	startX = 0.0;
 	startY = 0.0;

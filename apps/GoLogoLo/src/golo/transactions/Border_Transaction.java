@@ -1,15 +1,10 @@
 package golo.transactions;
 
 import golo.GoLogoLoApp;
-import golo.data.DragText;
-import golo.data.goloData;
 import golo.data.goloItemPrototype;
 import static golo.goloPropertyType.GOLO_BORDER_COLORPICKER;
 import static golo.goloPropertyType.GOLO_BORDER_RADIUS_SLIDER;
 import static golo.goloPropertyType.GOLO_BORDER_THICKNESS_SLIDER;
-import static golo.goloPropertyType.GOLO_TEXT_COLOR_COLORPICKER;
-import java.awt.Stroke;
-import javafx.scene.Node;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.paint.Paint;

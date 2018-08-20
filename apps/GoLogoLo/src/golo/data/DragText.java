@@ -14,17 +14,24 @@ import javafx.scene.text.Text;
 public class DragText extends Text  implements Drag{
     double startX;
     double startY;
+    
     boolean bold;
     boolean italic;
+    
     String TextIn;
+    
     goloItemPrototype attachedPrototype;
     
-    public DragText() {
+    public DragText() 
+    {
 	setX(300);
 	setY(300.0);	
+        
 	setOpacity(1.0);
+        
 	startX = 0.0;
 	startY = 0.0;
+        
         bold=false;
         italic=false;      
     }
@@ -32,9 +39,12 @@ public class DragText extends Text  implements Drag{
     public DragText(String text) {
 	setX(300.0);
 	setY(300.0);	
+        
 	setOpacity(1.0);
+        
 	startX = 0.0;
 	startY = 0.0;
+        
         TextIn=text;
         setText(text);
     }
@@ -49,10 +59,13 @@ public class DragText extends Text  implements Drag{
     public void drag(int x, int y) {
 	double diffX = x - startX ;
 	double diffY = y - startY;
+        
 	double newX = getX() + diffX;
 	double newY = getY() + diffY;
+        
 	xProperty().set(newX);
 	yProperty().set(newY);
+        
 	startX = x;
 	startY = y;
     }

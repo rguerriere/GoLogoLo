@@ -2,18 +2,13 @@ package golo.transactions;
 
 import golo.GoLogoLoApp;
 import golo.data.DragText;
-import golo.data.goloData;
 import golo.data.goloItemPrototype;
-import static golo.goloPropertyType.GOLO_BOLD_BUTTON;
 import static golo.goloPropertyType.GOLO_FONT_FAMILY_COMBOBOX;
 import static golo.goloPropertyType.GOLO_FONT_SIZE_COMBOBOX;
 import static golo.goloPropertyType.GOLO_TEXT_COLOR_COLORPICKER;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import jtps.jTPS_Transaction;
 
 /**

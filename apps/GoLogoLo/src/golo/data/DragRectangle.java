@@ -16,6 +16,7 @@ public class DragRectangle extends Rectangle implements Drag{
 
     double startX;
     double startY;
+    
     goloItemPrototype attachedPrototype;
     ArrayList<Anchor> anchors;
     
@@ -26,24 +27,32 @@ public class DragRectangle extends Rectangle implements Drag{
 	setHeight(300.0);
 	setOpacity(1.0);
         setStroke(Color.BLACK);
+        
 	startX = 0.0;
 	startY = 0.0;
+        
         Anchor TopLeft = new Anchor(AnchorPosition.TL);
         Anchor TopRight = new Anchor(AnchorPosition.TR);
         Anchor BottomRight = new Anchor(AnchorPosition.BR);
         Anchor BottomLeft = new Anchor(AnchorPosition.BL);
+        
         TopLeft.centerXProperty().bind(xProperty());
-        TopLeft.centerYProperty().bind(yProperty());      
+        TopLeft.centerYProperty().bind(yProperty());  
+        
         TopRight.centerXProperty().bind(xProperty().add(widthProperty()));
         TopRight.centerYProperty().bind(yProperty());  
+        
         BottomRight.centerXProperty().bind(xProperty().add(widthProperty()));
         BottomRight.centerYProperty().bind(yProperty().add(heightProperty()));
+        
         BottomLeft.centerXProperty().bind(xProperty());
         BottomLeft.centerYProperty().bind(yProperty().add(heightProperty())); 
+        
         TopLeft.setAttachedNode(this);
         TopRight.setAttachedNode(this);
         BottomRight.setAttachedNode(this);
         BottomLeft.setAttachedNode(this);
+        
         anchors = new ArrayList<>();
         anchors.addAll(Arrays.asList(TopLeft,TopRight,BottomRight,BottomLeft));
         setStroke(Color.BLACK);
@@ -61,10 +70,13 @@ public class DragRectangle extends Rectangle implements Drag{
     public void drag(int x, int y) {
 	double diffX = x - startX;
 	double diffY = y - startY;
+        
 	double newX = getX() + diffX;
 	double newY = getY() + diffY;
+        
 	xProperty().set(newX);
 	yProperty().set(newY);
+        
 	startX = x;
 	startY = y;
     }
@@ -73,6 +85,7 @@ public class DragRectangle extends Rectangle implements Drag{
     public void size(int x, int y) {
 	double width = x - getX();
 	widthProperty().set(width);
+        
 	double height = y - getY();
 	heightProperty().set(height);	
     }
@@ -81,6 +94,7 @@ public class DragRectangle extends Rectangle implements Drag{
     public void setPosandSize(double initX, double initY, double initWidth, double initHeight) {
 	xProperty().set(initX);
 	yProperty().set(initY);
+        
 	widthProperty().set(initWidth);
 	heightProperty().set(initHeight);
     }
@@ -92,15 +106,17 @@ public class DragRectangle extends Rectangle implements Drag{
     
    @Override
    public Node clone(){
-        DragRectangle copy=new DragRectangle();
-        copy.setX(getX());
-	copy.setY(getY());
-	copy.widthProperty().set(this.widthProperty().get());
-	copy.heightProperty().set(this.heightProperty().get());	
-        copy.setFill(getFill());
-        copy.setStroke(this.getStroke());
-        copy.setStrokeWidth(this.getStrokeWidth());
-        return copy;
+        DragRectangle cloney = new DragRectangle();
+        cloney.setX(getX());
+	cloney.setY(getY());
+        
+	cloney.widthProperty().set(this.widthProperty().get());
+	cloney.heightProperty().set(this.heightProperty().get());	
+        
+        cloney.setFill(getFill());
+        cloney.setStroke(this.getStroke());
+        cloney.setStrokeWidth(this.getStrokeWidth());
+        return cloney;
     }
 
     @Override

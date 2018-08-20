@@ -152,15 +152,6 @@ public class goloFiles implements AppFileComponent {
                 
                 String stop0 = "#" + Integer.toHexString(zero.hashCode());
                 String stop1 = "#" + Integer.toHexString(one.hashCode());
-                //String stop0 = String.format("#%02X%02X%02X",
-                 //            ((int)zero.getRed())*255,
-                 //            ((int)zero.getGreen())*255,
-                 //            ((int)zero.getBlue())*255);
-                //
-              //  String stop1 = String.format("#%02X%02X%02X",
-              //               ((int)one.getRed())*255,
-              //               ((int)one.getGreen())*255,
-              //               ((int)one.getBlue())*255);
                 
                 String StrokeColorString = String.format("#%02X%02X%02X",
                              ((int)strokeColor.getRed())*255,
@@ -546,83 +537,6 @@ public class goloFiles implements AppFileComponent {
 	return json;
     }
     
-    /**
-     * This method would be used to export data to another format,
-     * which we're not doing in this assignment.
-     
-    @Override
-    public void exportData(AppDataComponent data, String savedFileName) throws IOException {
-        String toDoListName = savedFileName.substring(0, savedFileName.indexOf("."));
-        String fileToExport = toDoListName + ".html";
-        try {
-            // GET THE ACTUAL DATA
-            goloData toDoData = (goloData)data;
-            PropertiesManager props = PropertiesManager.getPropertiesManager();
-            String exportDirPath = props.getProperty(APP_PATH_EXPORT) + toDoListName + "/";
-            File exportDir = new File(exportDirPath);
-            if (!exportDir.exists()) {
-                exportDir.mkdir();
-            }
-
-            // NOW LOAD THE TEMPLATE DOCUMENT
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            String htmlTemplatePath = props.getPropertiesDataPath() + props.getProperty(TDLM_EXPORT_TEMPLATE_FILE_NAME);
-            File file = new File(htmlTemplatePath);
-            System.out.println(file.getPath() + " exists? " + file.exists());
-            URL templateURL = file.toURI().toURL();
-            Document exportDoc = docBuilder.parse(templateURL.getPath());
-
-            // SET THE WEB PAGE TITLE
-            Node titleNode = exportDoc.getElementsByTagName(TITLE_TAG).item(0);
-            titleNode.setTextContent("No Name List");
-
-            // SET THE OWNER
-            Node ownerNode = getNodeWithId(exportDoc, HTML.Tag.TD.toString(), OWNER_TAG);
-            ownerNode.setTextContent(toDoData.getOwner());
-            
-            // ADD ALL THE ITEMS
-            Node tDataNode = getNodeWithId(exportDoc, "tdata", TABLE_DATA_TAG);
-            Iterator<goloItemPrototype> itemsIt = toDoData.itemsIterator();
-            while (itemsIt.hasNext()) {
-                goloItemPrototype item = itemsIt.next();
-                Element trElement = exportDoc.createElement(HTML.Tag.TR.toString());
-                tDataNode.appendChild(trElement);
-                addCellToRow(exportDoc, trElement, item.getCategory());
-                addCellToRow(exportDoc, trElement, item.getDescription());
-                addCellToRow(exportDoc, trElement, item.getStartDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
-                addCellToRow(exportDoc, trElement, "" + item.isCompleted());
-            }
-            
-            // CORRECT THE APP EXPORT PAGE
-            props.addProperty(APP_EXPORT_PAGE, exportDirPath + fileToExport);
-
-            // EXPORT THE WEB PAGE
-            saveDocument(exportDoc, props.getProperty(APP_EXPORT_PAGE));
-        }
-        catch(SAXException | ParserConfigurationException
-                | TransformerException exc) {
-            throw new IOException("Error loading " + fileToExport);
-        }
-    }
-    private void addCellToRow(Document doc, Node rowNode, String text) {
-        Element tdElement = doc.createElement(HTML.Tag.TD.toString());
-        tdElement.setTextContent(text);
-        rowNode.appendChild(tdElement);
-    }
-    * 
-    private Node getNodeWithId(Document doc, String tagType, String searchID) {
-        NodeList testNodes = doc.getElementsByTagName(tagType);
-        for (int i = 0; i < testNodes.getLength(); i++) {
-            Node testNode = testNodes.item(i);
-            Node testAttr = testNode.getAttributes().getNamedItem(HTML.Attribute.ID.toString());
-            if ((testAttr != null) && testAttr.getNodeValue().equals(searchID)) {
-                return testNode;
-            }
-        }
-        return null;
-    }
-    */
     private void saveDocument(Document doc, String outputFilePath)
             throws TransformerException, TransformerConfigurationException {
         TransformerFactory factory = TransformerFactory.newInstance();
