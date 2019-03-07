@@ -1,0 +1,274 @@
+/*
+    This style sheet manages the layout and style for all controls inside the
+    GoLogoLo JavaFX application. Note that the stylesheet has been setup such that
+    all colors in use are declared first as swatch colors inside the root 
+    and so one can change the color theme used by the app simply by changing
+    these colors.
+
+    Note that Material Design icons are being employed for all icon buttons
+    in this application, both for the Desktop Java Framework's top toolbar
+    as well as for icon buttons in the M3's edit toolbar. Note that this
+    app uses icons from https://material.io/icons/ and icon image sizes in
+    use are as follows:
+        djf top toolbar buttons: 36x36
+        
+
+    @author Richard McKenna
+    @author Richie
+    @version 1.0
+*/
+.root{
+    /* 
+        FIRST WE'LL DEFINE OUR SWATCHES, i.e. THE COMPLEMENTARY
+        COLORS THAT WE'LL USE TOGETHER IN MULTIPLE PLACES THAT
+        TOGETHER WILL MAKE UP A GIVEN THEME
+    */
+    -swatch-neutral:        #E6E6E6;
+    -swatch-primary-up:     #C0A8BB;
+    -swatch-primary:        #DBC9E0;
+    -swatch-primary-down:   #E9E0ED;
+    -swatch-complement:     #E4CBDF;
+    -swatch-accent:         #6D237A;
+    -swatch-bright-accent:  #5734D8;
+    
+    -fx-font-family: "Roboto";
+}
+/** 
+    FIRST WE HAVE THE CONTROLS THAT THE DESKTOP JAVA FRAMEWORK
+    MAY BE MAKING USE OF:
+        .djf_top_toolbar: toolbar running the length of the top
+        .djf_top_toolbar_pane: a pane in the top toolbar with buttons
+        .djf_icon_button: buttons in the top toolbar panes
+**/
+.djf_top_toolbar {
+    -fx-background-color:   -swatch-primary;
+    -fx-border-color:       -swatch-accent;
+    -fx-border-width:       2;
+    -fx-border-radius:      15;
+}
+.djf_toolbar_pane {
+    -fx-background-color:   -swatch-primary;
+    -fx-border-color:       -swatch-accent;
+    -fx-border-width:       2;
+    -fx-border-radius:      15;
+}
+.djf_icon_button {
+    -fx-background-color:   transparent;
+    -fx-pref-height:        42;
+    -fx-pref-width:         42;
+    -fx-min-height:         42;
+    -fx-min-width:          42;
+    -fx-padding:            0;
+}
+.djf_icon_button:hover {
+    -fx-background-color: linear-gradient(-swatch-primary-down, -swatch-primary-up);    
+}
+.djf_welcome_banner {
+    -fx-border-color:transparent;
+    -fx-border-width:10;
+}
+.djf_welcome_header {
+    -fx-font-size: 32pt;
+    -fx-background-color: transparent;
+}
+.djf_welcome_recent_pane {
+    -fx-padding: 20 20 20 20;
+    -fx-background-color:transparent;
+}
+.djf_welcome_recent_button {
+    -fx-font-size: 14pt;
+    -fx-underline: true;
+    -fx-text-fill: blue;
+    -fx-background-color:transparent;
+}
+.djf_welcome_recent_button:hover {
+    -fx-text-fill: magenta;
+}
+.djf_welcome_recent_button:pressed {
+    -fx-text-fill: yellow;
+}
+.djf_welcome_new_pane {
+    -fx-background-color:transparent;
+}
+.djf_welcome_new_button {
+    -fx-font-size:20pt;
+    -fx-background-color:transparent;
+    -fx-border-width:2px;
+    -fx-border-color:black;
+    -fx-border-radius:15px;
+}
+.djf_welcome_new_button:hover{
+    -fx-background-color:-swatch-primary;
+}
+.djf-welcome_new_button:pressed{
+    -fx-background-color:-swatch-accent;
+}
+
+/**
+    NEXT THE APP-SPECIFIC CONTROLS
+**/
+.golo_text_button, .golo_icon_button {
+    -fx-background-color: 
+        linear-gradient(#f2f2f2, #d6d6d6),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+}
+.golo_text_button:pressed, .golo_icon_button:pressed {
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );    
+    -fx-background-color:
+        linear-gradient(#c9e0cd, #a9d0bd),
+        radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+.golo_text_button:hover, .golo_icon_button:hover {
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );    
+}
+.golo_text_button{
+    -fx-max-width:130px;
+    -fx-min-height:50px;
+    -fx-max-height:50px;
+}
+.golo_icon_button {
+    -fx-min-width:100px;
+    -fx-max-width:100px;
+    -fx-min-height:50px;
+    -fx-max-height:50px;
+}
+.golo_pane, .golo_box {
+    -fx-background-color: rgb(215, 195, 219);
+    -fx-padding: 70 15 15 15;
+    -fx-border: 1 1 0 0;
+    -fx-border-color: black;
+    -fx-border-radius: 2;
+}
+
+.golo_list{
+    -fx-background-color: rgb(215, 195, 219);
+    -fx-border: 1 1 0 0;
+    -fx-border-color: black;
+    -fx-border-radius: 2;
+    -fx-min-width: 27em;
+    -fx-max-width: 27em;
+}
+
+.golo_list_buttons{
+    -fx-background-color: rgb(95, 37, 132);
+    -fx-border: 1 1 0 0;
+    -fx-border-color: black;
+    -fx-border-radius: 2;
+    -fx-padding: 15 15 15 15;
+
+}
+
+.golo_editToolbar{
+    -fx-background-color: rgb(95, 37, 132);
+    -fx-border: 1 1 0 0;
+    -fx-border-color: black;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-min-width: 27em;
+    -fx-max-width: 27em;
+    -fx-padding: 15 15 15 15;
+}
+
+.golo_combobox{
+    -fx-background-color: rgb(215, 195, 219);
+    -fx-padding: 70 15 15 15;
+    -fx-border: 1 1 0 0;
+    -fx-border-color: black;
+    -fx-border-radius: 2;
+    -fx-width: 20px;
+}
+
+.golo-pane {
+    -fx-spacing: 3 3 3 3;
+}
+.golo_big_header, .golo_small_header, .golo_prompt, .golo_text_field {
+    -fx-font-weight: bold;
+    -fx-padding: 10 10 10 10;
+}
+.golo_big_header {
+    -fx-font-size: 24pt;
+}
+.golo_small_header {
+    -fx-font-size: 16pt;
+}
+.golo_prompt {
+    -fx-font-size: 14pt;
+    -fx-min-width: 130px;
+    -fx-max-width: 130px;
+}
+.golo_text_field {
+    -fx-font-size: 14pt;
+    -fx-min-width: 250px;
+    -fx-max-width: 250px;
+}
+.golo_table {
+    -fx-font-size: 14pt;
+}
+
+.golo_table-cell:even{
+    -fx-background-color: grey;
+    
+    
+}
+
+.golo_table-cell:odd{
+    -fx-background-color: white ;
+}
+
+
+
+.column-header {
+    -fx-font-size: 16pt;
+    -fx-font-weight: bold;
+}
+.table-row-cell:empty {
+    -fx-background-color: #777777;
+    -fx-border-color: #777777;
+} 
+
+/* FOR DIALOGS */
+.golo_dialog_grid {
+    -fx-background-color: -swatch-primary;
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+.golo_dialog_header {
+    -fx-font-weight: bold;
+    -fx-font-size: 18pt
+}
+.golo_dialog_prompt {
+    -fx-font-weight: bold;
+    -fx-font-size: 14pt;
+}
+.golo_dialog_text_field, .golo_dialog_date_picker {
+    -fx-min-width:250px;
+    -fx-max-width:250px;
+    -fx-min-height:50px;
+    -fx-max-height:50px;
+    -fx-font-weight:bold;
+    -fx-font-size:14pt;
+}
+.golo_dialog_button {
+    -fx-min-width:100px;
+    -fx-max-width:100px;
+    -fx-min-height:50px;
+    -fx-max-height:50px;
+    -fx-font-weight: bold;
+    -fx-font-size: 16pt;
+}
+.tooltip {
+    -fx-font-size:14pt;
+    -fx-font-weight:bold;
+    -fx-background-radius: 50 50 50 50;
+    -fx-background-color:-swatch-bright-accent;
+}

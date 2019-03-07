@@ -110,7 +110,6 @@ public class goloFiles implements AppFileComponent {
     
     // FOR EXPORTING TO HTML
     static final String TABLE_DATA_TAG = "gologolo_table_data";
-
     /**
      * This method is for saving user work.
      * 
