@@ -1,3 +1,3 @@
-mlg-work/mlg.golo
 test-work/test.golo
+mlg-work/mlg.golo
 test2-work/test2.golo
